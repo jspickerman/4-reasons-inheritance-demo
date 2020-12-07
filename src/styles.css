@@ -1,1 +1,5 @@
 /* Add application styles & imports to this file! */
+
+body, span, h1, h2, h3, h4, h5, p {
+  font-family: Lato;
+}
