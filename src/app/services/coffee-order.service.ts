@@ -10,10 +10,11 @@ export class CoffeeOrderService {
 
   public getDemoCoffeeOrder(): Observable<CoffeeOrder> {
     const demoOrder: CoffeeOrder = {
-      size: 'large',
+      size: 'Large',
       roast: 'medium',
       product: CoffeeProducts.LATTE,
-      additions: []
+      additions: [],
+      total: 3.40
     }
     return of(demoOrder);
   }

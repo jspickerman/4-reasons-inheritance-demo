@@ -6,5 +6,6 @@ export interface CoffeeOrder {
     roast: string;
     product: CoffeeProducts;
     additions: CoffeeAddition[];
+    total: number;
 }
 

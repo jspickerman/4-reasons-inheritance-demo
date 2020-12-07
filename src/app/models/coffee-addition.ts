@@ -12,11 +12,11 @@ export interface DairyAddition extends CoffeeAddition {
 }
 
 export enum CoffeeProducts {
-    CAPPUCCINO = 'cappuccino',
-    LATTE = 'latte'
+    CAPPUCCINO = 'Cappuccino',
+    LATTE = 'Latte'
 }
 
 export enum DairyFoam {
-    REGULAR = 'regular',
-    EXTRA = 'extra'
+    REGULAR = 'Regular',
+    EXTRA = 'Extra'
 }
