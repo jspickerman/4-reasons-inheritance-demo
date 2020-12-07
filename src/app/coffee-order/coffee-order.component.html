@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-column">
+  <div *ngIf="coffeeOrder" class="card-column">
     <i class="fas fa-mug-hot card-drink"></i>
     <h2>{{coffeeOrder.product}}</h2>
   </div>

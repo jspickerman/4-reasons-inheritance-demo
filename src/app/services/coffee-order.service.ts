@@ -43,7 +43,7 @@ export class CoffeeOrderService {
     return of(demoAdditions);
   }
 
-    public getDemoDairyAdditions(): Observable<DairyAddition[]> {
+  public getDemoDairyAdditions(): Observable<DairyAddition[]> {
     const demoAdditions: DairyAddition[] = [
       {
         name: 'Nonfat Milk',

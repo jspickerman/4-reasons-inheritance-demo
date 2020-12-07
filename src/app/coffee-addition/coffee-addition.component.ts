@@ -21,9 +21,7 @@ export class CoffeeAdditionComponent implements OnInit {
   constructor(private orderService: CoffeeOrderService) { }
 
   ngOnInit() {
-    console.log(this.coffeeOrder);
     this.selected = this.additionSelected();
-    console.log(this.selected);
   }
 
   public additionSelected(): boolean {
@@ -38,6 +36,6 @@ export class CoffeeAdditionComponent implements OnInit {
 
   public saveAddition(): void {
     this.orderService.saveAddition(this.coffeeOrder, this.addition);
+    console.log(this.coffeeOrder);
   }
-
 }

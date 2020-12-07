@@ -24,6 +24,7 @@
 
 .addition-container:hover {
   background-color: #00C4A9;
+  color: #fff;
 }
 
 .addition-container:active {

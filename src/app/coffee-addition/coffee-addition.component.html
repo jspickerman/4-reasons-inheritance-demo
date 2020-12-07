@@ -1,4 +1,4 @@
-<div class="addition-container" [ngClass]="{'selected': selected}">
+<div class="addition-container" [ngClass]="{'selected': selected}" (click)="toggleAddition()">
   <div class="info">
     <span>{{addition.name}}</span>
     <span>-</span>
