@@ -25,17 +25,19 @@ export class CoffeeAdditionComponent implements OnInit {
   }
 
   public additionSelected(): boolean {
-    console.log(this.coffeeOrder);
-   return this.coffeeOrder.additions.some((addition) => addition.id === this.addition.id);
+    return this.coffeeOrder.additions.some((addition) => addition.id === this.addition.id);
   }
 
   public toggleAddition(): void {
     this.selected = !this.selected;
-    this.saveAddition();
+    this.updateAddition();
   }
 
-  public saveAddition(): void {
-    this.orderService.saveAddition(this.coffeeOrder, this.addition);
-    console.log(this.coffeeOrder);
+  public updateAddition(): void {
+    if (this.selected) {
+      this.orderService.addAddition(this.coffeeOrder, this.addition);
+    } else {
+      this.orderService.removeAddition(this.coffeeOrder, this.addition);
+    }
   }
 }

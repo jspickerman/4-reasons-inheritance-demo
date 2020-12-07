@@ -16,7 +16,7 @@ export class AppComponent  {
     constructor(private orderService: CoffeeOrderService) { }
 
     ngOnInit(): void {
-      this.demoOrder$ = this.orderService.getDemoCoffeeOrder();
+      this.demoOrder$ = this.orderService.order$;
     }
 
 }

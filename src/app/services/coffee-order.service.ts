@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { CoffeeAddition, CoffeeProducts, DairyAddition } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
 @Injectable()
 export class CoffeeOrderService {
+  private defaultOrder: CoffeeOrder = {
+    size: 'Large',
+    roast: 'medium',
+    product: CoffeeProducts.LATTE,
+    additions: [],
+    total: 3.40
+  }; 
+  private order: BehaviorSubject<CoffeeOrder>;
+  public order$: Observable<CoffeeOrder>
 
-  constructor() { }
-
-  public getDemoCoffeeOrder(): Observable<CoffeeOrder> {
-    const demoOrder: CoffeeOrder = {
-      size: 'Large',
-      roast: 'medium',
-      product: CoffeeProducts.LATTE,
-      additions: [],
-      total: 3.40
-    }
-    return of(demoOrder);
+  constructor() { 
+    this.order = new BehaviorSubject(this.defaultOrder);
+    this.order$ = this.order.asObservable() as Observable<CoffeeOrder>;
   }
 
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
@@ -73,8 +74,15 @@ export class CoffeeOrderService {
     return of(demoAdditions);
   }
 
-  public saveAddition(coffee: CoffeeOrder, addition: CoffeeAddition): Observable<any> {
-    const additions = [...coffee.additions, addition];
-    return of({...coffee, additions});
+  public addAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
+    const additions = [...order.additions, addition];
+    const total = order.total + addition.price;
+    this.order.next({...order, additions, total});
+  }
+
+  public removeAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
+    const additions = order.additions.filter(currentAddition => currentAddition.id !== addition.id);
+    const total = order.total - addition.price;
+    this.order.next({...order, additions, total});
   }
 }
