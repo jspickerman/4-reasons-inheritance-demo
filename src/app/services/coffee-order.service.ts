@@ -44,7 +44,7 @@ export class CoffeeOrderService {
   }
 
   public saveAddition(coffee: CoffeeOrder, addition: CoffeeAddition): Observable<any> {
-    return of(coffee);
+    const additions = [...coffee.additions, addition];
+    return of({...coffee, additions});
   }
-
 }

@@ -1,12 +1,22 @@
 .addition-container {
-  margin: 0 .5em;
-  padding: .5em 1em;
-
-  background-color: red;
-  color: white;
-  border-radius: 5px;
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin: 0 .5em;
+  padding: .5em 1em;
+}
+
+.addition-btn {
+  background-color: #00d1b2;
+  color: white;
+  border-radius: 5px;
+}
+
+.addition-btn:hover {
+  background-color: #00C4A9;
+}
+
+.addition-btn:active {
+  background-color: #00b89c;
 }
