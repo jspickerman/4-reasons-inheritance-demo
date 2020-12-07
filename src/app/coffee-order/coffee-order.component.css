@@ -3,14 +3,16 @@
   align-items: center;
 
   padding: .5em 1em;
-  border: 1px solid grey;
+  border: 1px solid #ece9e9;
   border-radius: 5px;
+  box-shadow: -4px 1px 4px #ece9e9;
   width: 550px;
 }
 
 .card-column {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -24,11 +26,21 @@
   margin: 0;
 }
 
+.summary-section {
+  width: 20%;
+  margin-right: 1em;
+  border-right: 1px solid #ece9e9;
+}
+
 .card-drink {
   font-size: 2.5em;
-  margin-right: .5em;
+}
+
+.addition-section {
+  width: 40%;
 }
 
 .addition-wrapper {
+  width: 100%;
   margin: .5em;
 }

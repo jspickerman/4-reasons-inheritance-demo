@@ -1,12 +1,12 @@
 <div class="card">
-  <div *ngIf="coffeeOrder" class="card-column">
+  <div *ngIf="coffeeOrder" class="card-column summary-section">
     <i class="fas fa-mug-hot card-drink"></i>
-    <h2>{{coffeeOrder.product}}</h2>
+    <h2 class="no-margin">{{coffeeOrder.product}}</h2>
     <span>{{coffeeOrder.total | currency}}</span>
   </div>
 
 
-  <div class="card-column">
+  <div class="card-column addition-section">
       <span>Additions</span>
     <ng-container *ngIf="availableAdditions$ | async as additions">
       <div class="addition-wrapper" *ngFor="let addition of additions">
@@ -15,7 +15,7 @@
     </ng-container>
   </div>
 
-  <div class="card-column">
+  <div class="card-column addition-section">
     <span>Dairy Additions</span>
     <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
       <div class="addition-wrapper" *ngFor="let addition of dairyAdditions">
