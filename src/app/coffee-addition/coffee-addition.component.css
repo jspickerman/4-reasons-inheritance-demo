@@ -4,15 +4,22 @@
   justify-content: center;
   align-items: center;
 
-  background-color: #00d1b2;
-  color: white;
-  border: none;
+  margin: 0 .5em;
+  padding: .5em 1em;
+
+  background-color: #fff;
+  color: #00d1b2;
+  border: 1px solid #00d1b2;
   border-radius: 5px;
 }
 
+.addition-container.selected {
+    background-color: #00d1b2;
+     color: #fff;
+}
+
 .info {
-  margin: 0 .5em;
-  padding: .5em 1em;
+  margin-top: .25em;
 }
 
 .addition-container:hover {
