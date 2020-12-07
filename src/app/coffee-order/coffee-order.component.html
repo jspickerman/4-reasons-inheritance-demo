@@ -11,6 +11,7 @@
 
   <ng-container *ngIf="availableAdditions$ | async as additions">
     <ng-container *ngFor="addition in additions">
-        <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+      <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+    </ng-container>
   </ng-container>
 </div>
