@@ -9,5 +9,8 @@
     <span>{{coffeeOrder.total | currency}}</span>
   </div>
 
-  <app-coffee-addition [coffeeOrder]="coffeeOrder"></app-coffee-addition>
+  <ng-container *ngIf="availableAdditions$ | async as additions">
+    <ng-container *ngFor="addition in additions">
+        <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+  </ng-container>
 </div>

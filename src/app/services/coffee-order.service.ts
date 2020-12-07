@@ -19,6 +19,30 @@ export class CoffeeOrderService {
     return of(demoOrder);
   }
 
+  public getDemoAdditions(): Observable<CoffeeAddition[]> {
+    const demoAdditions: CoffeeAddition[] = [
+      {
+        name: 'Nonfat Milk',
+        id: 59898981,
+        quantity: 1,
+        price: .50
+      },
+            {
+        name: '2% Milk',
+        id: 59898982,
+        quantity: 1,
+        price: .50
+      },
+            {
+        name: 'Whole Milk',
+        id: 59898984,
+        quantity: 1,
+        price: .50
+      }
+    ];
+    return of(demoAdditions);
+  }
+
   public saveAddition(coffee: CoffeeOrder, addition: CoffeeAddition): Observable<any> {
     return of(coffee);
   }
