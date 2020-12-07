@@ -13,11 +13,11 @@
     </ng-container>
   </div>
 
-    <div class="card-column">
+  <div class="card-column">
     <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
-      <ng-container *ngFor="let addition of additions">
+      <div class="addition-wrapper" *ngFor="let addition of dairyAdditions">
         <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-dairy-addition>
-      </ng-container>
+      </div>
     </ng-container>
   </div>
 </div>
