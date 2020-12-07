@@ -6,12 +6,14 @@
   
   <div class="card-row">
     <i class="fas fa-dollar-sign"></i>    
-    <span>{{coffeeOrder.total | currency}}</span>
+    <span>Total: {{coffeeOrder.total | currency}}</span>
   </div>
 
-  <ng-container *ngIf="availableAdditions$ | async as additions">
-    <ng-container *ngFor="let addition of additions">
-      <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+  <div class="card-row">
+    <ng-container *ngIf="availableAdditions$ | async as additions">
+      <ng-container *ngFor="let addition of additions">
+        <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+      </ng-container>
     </ng-container>
-  </ng-container>
+  </div>
 </div>
