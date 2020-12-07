@@ -10,7 +10,7 @@
   </div>
 
   <ng-container *ngIf="availableAdditions$ | async as additions">
-    <ng-container *ngFor="addition in additions">
+    <ng-container *ngFor="let addition of additions">
       <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
     </ng-container>
   </ng-container>
