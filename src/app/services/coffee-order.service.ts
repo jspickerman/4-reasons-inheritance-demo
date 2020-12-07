@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { CoffeeAddition, CoffeeProducts } from '../models/coffee-addition';
+import { CoffeeAddition, CoffeeProducts, DairyAddition } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
 @Injectable()
@@ -22,22 +22,52 @@ export class CoffeeOrderService {
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
     const demoAdditions: CoffeeAddition[] = [
       {
-        name: 'Nonfat Milk',
+        name: 'Sugar',
         id: 59898981,
-        quantity: 1,
-        price: .50
+        quantity: 0,
+        price: .25
       },
             {
-        name: '2% Milk',
+        name: 'Raw Sugar',
         id: 59898982,
         quantity: 1,
         price: .50
       },
             {
-        name: 'Whole Milk',
+        name: 'Vanilla Powder',
         id: 59898984,
         quantity: 1,
         price: .50
+      }
+    ];
+    return of(demoAdditions);
+  }
+
+    public getDemoDairyAdditions(): Observable<DairyAddition[]> {
+    const demoAdditions: DairyAddition[] = [
+      {
+        name: 'Nonfat Milk',
+        id: 59898981,
+        quantity: 1,
+        price: .50,
+        steamed: false,
+        temperature: 155
+      },
+            {
+        name: '2% Milk',
+        id: 59898982,
+        quantity: 1,
+        price: .50,
+        steamed: false,
+        temperature: 155
+      },
+            {
+        name: 'Whole Milk',
+        id: 59898984,
+        quantity: 1,
+        price: .50,
+        steamed: false,
+        temperature: 155
       }
     ];
     return of(demoAdditions);

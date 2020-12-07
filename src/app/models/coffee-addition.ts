@@ -8,7 +8,7 @@ export interface CoffeeAddition {
 export interface DairyAddition extends CoffeeAddition {
     steamed: boolean;
     temperature: number;
-    foam: DairyFoam;
+    foam?: DairyFoam;
 }
 
 export enum CoffeeProducts {

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CoffeeAddition } from '../models/coffee-addition';
+import { CoffeeAddition, DairyAddition } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 import { CoffeeOrderService } from '../services/coffee-order.service';
 
@@ -16,9 +16,12 @@ export class CoffeeOrderComponent implements OnInit {
 
   availableAdditions$: Observable<CoffeeAddition[]>
 
+  dairyAdditions$: Observable<DairyAddition[]>
+
   constructor(private orderService: CoffeeOrderService) { }
 
   ngOnInit() {
     this.availableAdditions$ = this.orderService.getDemoAdditions();
+    this.dairyAdditions$ = this.orderService.getDemoDairyAdditions();
   }
 }

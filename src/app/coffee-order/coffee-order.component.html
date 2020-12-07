@@ -1,17 +1,22 @@
 <div class="card">
-  <div class="card-row">
+  <div class="card-column">
     <i class="fas fa-mug-hot card-drink"></i>
     <h2>{{coffeeOrder.product}}</h2>
   </div>
-  
-  <div class="card-row">
-    <span>{{coffeeOrder.total | currency}}</span>
-  </div>
 
-  <div class="card-row">
+
+  <div class="card-column">
     <ng-container *ngIf="availableAdditions$ | async as additions">
       <ng-container *ngFor="let addition of additions">
         <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+      </ng-container>
+    </ng-container>
+  </div>
+
+    <div class="card-column">
+    <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
+      <ng-container *ngFor="let addition of additions">
+        <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-dairy-addition>
       </ng-container>
     </ng-container>
   </div>
