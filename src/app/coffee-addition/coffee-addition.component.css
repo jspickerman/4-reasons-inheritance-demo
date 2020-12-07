@@ -1,12 +1,8 @@
 .addition-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.addition-btn {
-  margin: 0 .5em;
-  padding: .5em 1em;
 
   background-color: #00d1b2;
   color: white;
@@ -14,10 +10,15 @@
   border-radius: 5px;
 }
 
-.addition-btn:hover {
+.info {
+  margin: 0 .5em;
+  padding: .5em 1em;
+}
+
+.addition-container:hover {
   background-color: #00C4A9;
 }
 
-.addition-btn:active {
+.addition-container:active {
   background-color: #00b89c;
 }

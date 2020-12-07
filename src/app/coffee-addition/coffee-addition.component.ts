@@ -22,6 +22,20 @@ export class CoffeeAdditionComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.coffeeOrder);
+    this.selected = this.additionSelected();
+  }
+
+  public additionSelected(): boolean {
+   return this.coffeeOrder.additions.some((addition) => addition.id === this.addition.id);
+  }
+
+  public toggleAddition(): void {
+    this.selected = !this.selected;
+    this.saveAddition();
+  }
+
+  public saveAddition(): void {
+    this.orderService.saveAddition(this.coffeeOrder, this.addition);
   }
 
 }
