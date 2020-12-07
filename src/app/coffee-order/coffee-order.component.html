@@ -2,6 +2,7 @@
   <div *ngIf="coffeeOrder" class="card-column">
     <i class="fas fa-mug-hot card-drink"></i>
     <h2>{{coffeeOrder.product}}</h2>
+    <span>{{coffeeOrder.total | currency}}</span>
   </div>
 
 
