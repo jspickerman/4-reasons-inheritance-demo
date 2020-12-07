@@ -6,7 +6,7 @@
   padding: .5em 1em;
   border: 1px solid grey;
   border-radius: 5px;
-  width: 400px;
+  width: 550px;
 }
 
 .card-column {
@@ -17,7 +17,12 @@
 
 .card-row {
   display: flex;
-  align-items: center
+  align-items: center;
+  margin: .5em 0;
+}
+
+.card-row h2 {
+  margin: 0;
 }
 
 .card-drink {

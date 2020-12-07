@@ -2,14 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  margin: 0 .5em;
-  padding: .5em 1em;
 }
 
 .addition-btn {
+  margin: 0 .5em;
+  padding: .5em 1em;
+
   background-color: #00d1b2;
   color: white;
+  border: none;
   border-radius: 5px;
 }
 

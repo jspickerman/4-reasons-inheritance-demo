@@ -1,7 +1,7 @@
 <div class="addition-container">
-  <button class="addition-btn">
+  <button class="addition-btn" (click)="saveAddition()">
     <span>{{addition.name}}</span>
     <span>-</span>
-    <span>{{addition.price}}</span>
+    <span>{{addition.price | currency}}</span>
   </button>
 </div>
