@@ -1,1 +1,5 @@
 @import '../coffee-addition.component.css';
+
+.foam-container {
+  margin-top: .5em;
+}

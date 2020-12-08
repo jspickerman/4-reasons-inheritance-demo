@@ -1,18 +1,18 @@
 <div class="addition-container">
-  <h4>{{addition.name}}</h4>
+  <h4 class="label">{{addition.name}}</h4>
   <select [(ngModel)]="selectedOption" (change)="saveSelection()">
     <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} - {{option.price | currency}}
     </option>
   </select>
 
-  <ng-container *ngIf="selectedOption">
+  <div class="foam-container" *ngIf="selectedOption">
     <span>Foam?</span>
-  <select [(ngModel)]="selectedFoam" (change)="saveFoam()">
-    <option *ngFor="let foam of addition.foamOptions" [ngValue]="foam">
-      {{foam}}
-    </option>
-  </select>
-  <button *ngIf="showCappuccinoMessage">Switch to Cappuccino?</button>
-  </ng-container>
+    <select [(ngModel)]="selectedFoam" (change)="saveFoam()">
+      <option *ngFor="let foam of addition.foamOptions" [ngValue]="foam">
+        {{foam}}
+      </option>
+    </select>
+    <button *ngIf="showCappuccinoMessage">Switch to Cappuccino?</button>
+  </div>
 </div>

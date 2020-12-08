@@ -28,18 +28,14 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
     if (this.selectedFoam) {
       this.orderService.addFoam(this.coffeeOrder, this.addition, this.selectedFoam);
       this.showCappuccinoMessage = this.suggestCappuccino();
-      console.log(this.showCappuccinoMessage);
     } else {
       this.orderService.removeFoam(this.coffeeOrder, this.addition);
     }
   }
   
   suggestCappuccino(): boolean {
-    console.log(this.addition);
-    const additionInstance: DairyAddition = this.coffeeOrder.additions.find((addition) => addition.name === AdditionTypes.DAIRY);
-
     return (
-        (additionInstance && additionInstance.selectedFoam === DairyFoam.EXTRA) &&
+        this.selectedFoam === DairyFoam.EXTRA && 
         this.coffeeOrder.product.name !== CoffeeProducts.CAPPUCCINO
     );
   }

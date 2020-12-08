@@ -12,10 +12,10 @@ export interface CoffeeAdditionOption {
 }
 
 export interface DairyAddition extends CoffeeAddition {
-    steamed: boolean;
-    temperature: number;
-    selectedFoam: DairyFoam;
-    foamOptions: DairyFoam[];
+  steamed: boolean;
+  temperature: number;
+  selectedFoam: DairyFoam;
+  foamOptions: DairyFoam[];
 }
 
 export interface CoffeeProduct {
@@ -24,9 +24,9 @@ export interface CoffeeProduct {
 }
 
 export enum AdditionTypes {
-  DAIRY = 'dairy',
-  SUGAR = 'sugar',
-  FOAM = 'foam'
+  DAIRY = 'Dairy',
+  SUGAR = 'Sugar',
+  FOAM = 'Foam'
 }
 
 export enum DairyFoam {
