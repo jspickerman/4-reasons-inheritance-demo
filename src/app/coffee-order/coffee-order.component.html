@@ -6,20 +6,16 @@
   </div>
 
   <div class="card-column">
-    <div class="card-column addition-section">
-      <ng-container *ngIf="availableAdditions$ | async as additions">
-        <div class="addition-wrapper" *ngFor="let addition of additions">
-          <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
-        </div>
-      </ng-container>
-    </div>
+    <ng-container *ngIf="availableAdditions$ | async as additions">
+      <div class="addition-wrapper" *ngFor="let addition of additions">
+        <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+      </div>
+    </ng-container>
 
-    <div class="card-column addition-section">
-      <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
-        <div class="addition-wrapper" *ngFor="let dairyAddition of dairyAdditions">
-          <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="dairyAddition"></app-dairy-addition>
-        </div>
-      </ng-container>
-    </div>
+    <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
+      <div class="addition-wrapper" *ngFor="let dairyAddition of dairyAdditions">
+        <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="dairyAddition"></app-dairy-addition>
+      </div>
+    </ng-container>
   </div>
 </div>
