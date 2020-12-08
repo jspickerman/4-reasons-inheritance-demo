@@ -1,8 +1,12 @@
 export interface CoffeeAddition {
     name: string;
     id: number;
-    quantity: number;
-    price: number;
+    options: CoffeeAdditionOption[];
+}
+
+export interface CoffeeAdditionOption {
+  name: string;
+  price: number;
 }
 
 export interface DairyAddition extends CoffeeAddition {

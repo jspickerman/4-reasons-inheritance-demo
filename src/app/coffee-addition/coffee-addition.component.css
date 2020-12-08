@@ -7,13 +7,13 @@
   margin: 0 .5em;
   padding: .5em 1em;
 
-  background-color: #fff;
+  /* background-color: #fff;
   color: #00d1b2;
   border: 1px solid #00d1b2;
-  border-radius: 5px;
+  border-radius: 5px; */
 }
 
-.addition-container.selected {
+/* .addition-container.selected {
     background-color: #00d1b2;
      color: #fff;
 }
@@ -25,4 +25,4 @@
 
 .addition-container:active {
   background-color: #00b89c;
-}
+} */

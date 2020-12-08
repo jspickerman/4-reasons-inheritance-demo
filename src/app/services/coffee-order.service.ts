@@ -21,68 +21,58 @@ export class CoffeeOrderService {
   }
 
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
-    const demoAdditions: CoffeeAddition[] = [
-      {
+    const demoAdditions: CoffeeAddition[] = [{
         name: 'Sugar',
         id: 59898981,
-        quantity: 0,
-        price: .25
-      },
-            {
-        name: 'Raw Sugar',
-        id: 59898982,
-        quantity: 1,
-        price: .50
-      },
-            {
-        name: 'Vanilla Powder',
-        id: 59898984,
-        quantity: 1,
-        price: .50
-      }
-    ];
+        options: [{
+          name: 'White Sugar',
+          price: .25
+        },
+        {
+          name: 'Raw Sugar',
+          price: .50
+        },
+        {
+          name: 'Brown Sugar',
+          price: .50
+        }
+      ]
+    }];
     return of(demoAdditions);
   }
 
   public getDemoDairyAdditions(): Observable<DairyAddition[]> {
-    const demoAdditions: DairyAddition[] = [
-      {
-        name: 'Nonfat Milk',
+    const demoAdditions: DairyAddition[] = [{
+        name: 'Sugar',
         id: 59898981,
-        quantity: 1,
-        price: .50,
         steamed: false,
-        temperature: 155
-      },
-            {
-        name: '2% Milk',
-        id: 59898982,
-        quantity: 1,
-        price: .50,
-        steamed: false,
-        temperature: 155
-      },
-            {
-        name: 'Whole Milk',
-        id: 59898984,
-        quantity: 1,
-        price: .50,
-        steamed: false,
-        temperature: 155
-      }
-    ];
+        temperature: 155,
+        options: [{
+          name: 'Nonfat',
+          price: .25
+        },
+        {
+          name: '2%',
+          price: .50
+        },
+        {
+          name: 'Whole',
+          price: .50
+        }
+      ]
+    }];
     return of(demoAdditions);
   }
 
   public addAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
     const additions = [...order.additions, addition];
-    const total = order.total + addition.price;
+    const total = order.total;
     this.order.next({...order, additions, total});
   }
 
   public removeAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
     const additions = order.additions.filter(currentAddition => currentAddition.id !== addition.id);
-    const total = order.total - addition.price;
+    const total = order.total;
     this.order.next({...order, additions, total});
   }
 }
