@@ -3,6 +3,9 @@
     <i class="fas fa-mug-hot card-drink"></i>
     <h2 class="no-margin">{{coffeeOrder.product.name}}</h2>
     <span>{{coffeeOrder.total | currency}}</span>
+    <span *ngFor="let addition of coffeeOrder.additions">
+      {{addition.selectedOption.name}}
+    </span>
   </div>
 
   <div class="card-column">

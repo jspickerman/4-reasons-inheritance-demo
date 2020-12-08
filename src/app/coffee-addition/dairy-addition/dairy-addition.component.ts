@@ -14,6 +14,7 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
   addition: DairyAddition;
 
   showCappuccinoMessage: boolean;
+  selectedFoam: DairyFoam;
 
   constructor(orderService: CoffeeOrderService) {
     super(orderService);
