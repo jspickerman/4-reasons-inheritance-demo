@@ -1,6 +1,6 @@
 <div class="addition-container">
   <h4 class="label">{{addition.name}}</h4>
-  <select [(ngModel)]="selectedOption" (change)="saveSelection()">
+  <select class="addition-select" [(ngModel)]="selectedOption" (change)="saveSelection()">
     <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} - {{option.price | currency}}
     </option>
@@ -8,11 +8,11 @@
 
   <div class="foam-container" *ngIf="selectedOption">
     <h5 class="label">Foam?</h5>
-    <select [(ngModel)]="selectedFoam" (change)="saveFoam()">
+    <select class="addition-select" [(ngModel)]="selectedFoam" (change)="saveFoam()">
       <option *ngFor="let foam of addition.foamOptions" [ngValue]="foam">
         {{foam}}
       </option>
     </select>
-    <button *ngIf="showCappuccinoMessage">Switch to Cappuccino?</button>
+    <span *ngIf="showCappuccinoMessage">Make Cappuccino?</span>
   </div>
 </div>
