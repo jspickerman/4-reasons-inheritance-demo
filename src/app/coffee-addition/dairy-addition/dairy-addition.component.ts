@@ -24,6 +24,14 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
     super.ngOnInit();
   }
 
+  saveFoam(): void {
+    if (this.selectedFoam) {
+      this.orderService.addFoam(this.coffeeOrder, this.addition, this.selectedFoam);
+    } else {
+      
+    }
+  }
+
   //   setFoam(foam: DairyFoam): void {
   //   this.addition.foam = foam;
   // }

@@ -18,7 +18,7 @@ export class CoffeeAdditionComponent implements OnInit {
 
   public selectedOption: CoffeeAdditionOption;
 
-  constructor(private orderService: CoffeeOrderService) { }
+  constructor(public orderService: CoffeeOrderService) { }
 
   ngOnInit() {
     this.preselectCurrentOption();
