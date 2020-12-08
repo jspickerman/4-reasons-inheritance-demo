@@ -7,7 +7,7 @@
   </select>
 
   <div class="foam-container" *ngIf="selectedOption">
-    <h6 class="label">Foam?</h6>
+    <h5 class="label">Foam?</h5>
     <select [(ngModel)]="selectedFoam" (change)="saveFoam()">
       <option *ngFor="let foam of addition.foamOptions" [ngValue]="foam">
         {{foam}}
