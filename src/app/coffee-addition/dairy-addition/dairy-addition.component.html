@@ -6,13 +6,13 @@
     </option>
   </select>
 
-  <div class="foam-container" *ngIf="selectedOption">
+  <div class="foam-container">
     <h5 class="label">Foam?</h5>
     <select class="addition-select" [(ngModel)]="selectedFoam" (change)="saveFoam()">
       <option *ngFor="let foam of addition.foamOptions" [ngValue]="foam">
         {{foam}}
       </option>
     </select>
-    <span *ngIf="showCappuccinoMessage">Make Cappuccino?</span>
+    <span class="nudge" [hidden]="!showCappuccinoMessage">Make Cappuccino?</span>
   </div>
 </div>

@@ -1,6 +1,20 @@
 @import '../coffee-addition.component.css';
 
 .foam-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: .5em;
+}
+
+.nudge {
+  margin: .5em;
+  padding: .25em;
+  border-radius: 25px;
+  background-color: #713e8a;
+  font-size: .75em;
+  color: #fff;
+  text-align: center;
 }

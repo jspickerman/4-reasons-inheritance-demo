@@ -4,6 +4,14 @@ body, span, h1, h2, h3, h4, h5, p {
   font-family: Lato;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: black;
+}
+
+body, span, p {
+  color: #4a4a4a;
+}
+
 .no-margin {
   margin: 0;
 }
