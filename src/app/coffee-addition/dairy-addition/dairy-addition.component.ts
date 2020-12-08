@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CoffeeProducts, DairyAddition, DairyFoam } from '../../models/coffee-addition';
+import { AdditionTypes, CoffeeProducts, DairyAddition, DairyFoam } from '../../models/coffee-addition';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
 
@@ -27,14 +27,19 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
   saveFoam(): void {
     if (this.selectedFoam) {
       this.orderService.addFoam(this.coffeeOrder, this.addition, this.selectedFoam);
+      this.showCappuccinoMessage = this.suggestCappuccino();
+      console.log(this.showCappuccinoMessage);
     } else {
       this.orderService.removeFoam(this.coffeeOrder, this.addition);
     }
   }
   
   suggestCappuccino(): boolean {
+    console.log(this.addition);
+    const additionInstance: DairyAddition = this.coffeeOrder.additions.find((addition) => addition.name === AdditionTypes.DAIRY);
+
     return (
-        (this.addition.selectedFoam && this.addition.selectedFoam === DairyFoam.EXTRA) &&
+        (additionInstance && additionInstance.selectedFoam === DairyFoam.EXTRA) &&
         this.coffeeOrder.product.name !== CoffeeProducts.CAPPUCCINO
     );
   }

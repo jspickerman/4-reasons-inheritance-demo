@@ -23,6 +23,12 @@ export interface CoffeeProduct {
   price: number;
 }
 
+export enum AdditionTypes {
+  DAIRY = 'dairy',
+  SUGAR = 'sugar',
+  FOAM = 'foam'
+}
+
 export enum DairyFoam {
     REGULAR = 'Regular',
     EXTRA = 'Extra'
