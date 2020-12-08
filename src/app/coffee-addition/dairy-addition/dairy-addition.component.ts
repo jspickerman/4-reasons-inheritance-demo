@@ -13,14 +13,14 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
   @Input()
   addition: DairyAddition;
 
-  showCappuccinoMessage: boolean;
   selectedFoam: DairyFoam;
+  showCappuccinoMessage: boolean;
 
   constructor(orderService: CoffeeOrderService) {
     super(orderService);
    }
 
-  ngOnInit() {
+  ngOnInit(): void {
     super.ngOnInit();
   }
 
@@ -28,15 +28,14 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
     if (this.selectedFoam) {
       this.orderService.addFoam(this.coffeeOrder, this.addition, this.selectedFoam);
     } else {
-      
+      this.orderService.removeFoam(this.coffeeOrder, this.addition);
     }
   }
-
-  //   setFoam(foam: DairyFoam): void {
-  //   this.addition.foam = foam;
-  // }
   
-  // suggestCappuccino(): boolean {
-  //   // return (this.addition.foam === DairyFoam.EXTRA && this.coffeeOrder.product !== CoffeeProducts.CAPPUCCINO);
-  // }
+  suggestCappuccino(): boolean {
+    return (
+        (this.addition.selectedFoam && this.addition.selectedFoam === DairyFoam.EXTRA) &&
+        this.coffeeOrder.product.name !== CoffeeProducts.CAPPUCCINO
+    );
+  }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyAddition, DairyFoam, dairyFoams } from '../models/coffee-addition';
+import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyAddition, DairyFoam } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
 @Injectable()
@@ -54,23 +54,27 @@ export class CoffeeOrderService {
         id: 59898982,
         steamed: false,
         temperature: 155,
-        selectedOption: null,
-        foam: null,
-        foamOptions: dairyFoams,
+        selectedOption: {
+          id: 654841212,
+          name: '2%',
+          price: 0.00
+        },
+        selectedFoam: DairyFoam.REGULAR,
+        foamOptions: [DairyFoam.REGULAR, DairyFoam.EXTRA],
         options: [{
           id: 7878979845,
           name: 'Nonfat',
-          price: .25
+          price: 0.00
         },
         {
           id: 654841212,
           name: '2%',
-          price: .50
+          price: 0.00
         },
         {
           id: 9876513524,
           name: 'Whole',
-          price: .50
+          price: 0.00
         }
       ]
     }];
@@ -126,17 +130,15 @@ export class CoffeeOrderService {
     this.order.next({...order, additions, total});
   }
 
-  public addFoam(order: CoffeeOrder, addition: DairyAddition, foam: DairyFoam): void {
-    const updatedAddition = {...addition, foam};
-    const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
-    const additions = [...filteredAdditions, {...updatedAddition}];
+  public addFoam(order: CoffeeOrder, addition: DairyAddition, selectedFoam: DairyFoam): void {
+    const updatedAddition = {...addition, selectedFoam};
+    const additions = [...order.additions, {...updatedAddition}];
     this.order.next({...order, additions});
   }
 
   public removeFoam(order: CoffeeOrder, addition: DairyAddition): void {
-    const updatedAddition = {...addition, foam: null};
-    const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
-    const additions = [...filteredAdditions, {...updatedAddition}];
+    const updatedAddition = {...addition, selectedFoam: null};
+    const additions = [...order.additions, {...updatedAddition}];
     this.order.next({...order, additions});
   }
 }
