@@ -1,7 +1,8 @@
-<div class="addition-container" [ngClass]="{'selected': selected}" (click)="toggleAddition()">
+<div class="addition-container">
   <h4>{{addition.name}}</h4>
-  <select>
-    <option *ngFor="let option of addition.options">
+  <select [value]="selectedOption">
+    <option>None</option>
+    <option *ngFor="let option of addition.options" (click)="setSelection(option)">
       {{option.name}} - {{option.price | currency}}
     </option>
   </select>

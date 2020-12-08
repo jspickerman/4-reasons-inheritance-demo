@@ -1,6 +1,7 @@
 export interface CoffeeAddition {
     name: string;
     id: number;
+    selectedOption: CoffeeAdditionOption;
     options: CoffeeAdditionOption[];
 }
 

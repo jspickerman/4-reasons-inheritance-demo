@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { CoffeeAddition, CoffeeProducts, DairyAddition } from '../models/coffee-addition';
+import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyAddition } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
 @Injectable()
@@ -24,6 +24,7 @@ export class CoffeeOrderService {
     const demoAdditions: CoffeeAddition[] = [{
         name: 'Sugar',
         id: 59898981,
+        selectedOption: null,
         options: [{
           name: 'White Sugar',
           price: .25
@@ -47,6 +48,7 @@ export class CoffeeOrderService {
         id: 59898981,
         steamed: false,
         temperature: 155,
+        selectedOption: null,
         options: [{
           name: 'Nonfat',
           price: .25
@@ -64,15 +66,16 @@ export class CoffeeOrderService {
     return of(demoAdditions);
   }
 
-  public addAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
+  public addAddition(order: CoffeeOrder, addition: CoffeeAddition, option: CoffeeAdditionOption): void {
+    console.log('add!');
     const additions = [...order.additions, addition];
-    const total = order.total;
+    const total = order.total + option.price;
     this.order.next({...order, additions, total});
   }
 
-  public removeAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
+  public removeAddition(order: CoffeeOrder, addition: CoffeeAddition, option: CoffeeAdditionOption): void {
     const additions = order.additions.filter(currentAddition => currentAddition.id !== addition.id);
-    const total = order.total;
+    const total = order.total - option.price;
     this.order.next({...order, additions, total});
   }
 }
