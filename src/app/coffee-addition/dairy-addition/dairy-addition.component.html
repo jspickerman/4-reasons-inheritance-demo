@@ -1,9 +1,13 @@
-<!-- <div class="addition-container" (click)="toggleAddition()">
+<div class="addition-container">
   <h4>{{addition.name}}</h4>
-  <select>
-    <option>None</option>
-    <option *ngFor="let option of addition.options">
+  <select [(ngModel)]="selectedOption" (change)="saveSelection()">
+    <option [ngValue]="null">None</option>
+    <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} - {{option.price | currency}}
     </option>
   </select>
-</div> -->
+
+  <ng-container *ngIf="selectedOption">
+    <span>Foam?</span>
+  </ng-container>
+</div>

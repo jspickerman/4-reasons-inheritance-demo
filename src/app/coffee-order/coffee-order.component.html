@@ -1,7 +1,7 @@
 <div class="card">
   <div *ngIf="coffeeOrder" class="card-column summary-section">
     <i class="fas fa-mug-hot card-drink"></i>
-    <h2 class="no-margin">{{coffeeOrder.product}}</h2>
+    <h2 class="no-margin">{{coffeeOrder.product.name}}</h2>
     <span>{{coffeeOrder.total | currency}}</span>
   </div>
 
@@ -15,12 +15,11 @@
     </div>
 
     <div class="card-column addition-section">
-      <span>Dairy Additions</span>
-      <!-- <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
-        <div class="addition-wrapper" *ngFor="let addition of dairyAdditions">
-          <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-dairy-addition>
+      <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
+        <div class="addition-wrapper" *ngFor="let dairyAddition of dairyAdditions">
+          <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="dairyAddition"></app-coffee-addition>
         </div>
-      </ng-container> -->
+      </ng-container>
     </div>
   </div>
 </div>

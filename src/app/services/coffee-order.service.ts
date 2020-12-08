@@ -8,9 +8,12 @@ export class CoffeeOrderService {
   private defaultOrder: CoffeeOrder = {
     size: 'Large',
     roast: 'medium',
-    product: CoffeeProducts.LATTE,
+    product: {
+      name: 'Latte',
+      price: 3.90
+    },
     additions: [],
-    total: 3.40
+    total: 3.90
   }; 
   private order: BehaviorSubject<CoffeeOrder>;
   public order$: Observable<CoffeeOrder>
@@ -26,14 +29,17 @@ export class CoffeeOrderService {
         id: 59898981,
         selectedOption: null,
         options: [{
+          id: 98765131,
           name: 'White Sugar',
           price: .25
         },
         {
+          id: 98765315,
           name: 'Raw Sugar',
           price: .50
         },
         {
+          id: 9874561,
           name: 'Brown Sugar',
           price: .50
         }
@@ -44,20 +50,23 @@ export class CoffeeOrderService {
 
   public getDemoDairyAdditions(): Observable<DairyAddition[]> {
     const demoAdditions: DairyAddition[] = [{
-        name: 'Sugar',
-        id: 59898981,
+        name: 'Dairy',
+        id: 59898982,
         steamed: false,
         temperature: 155,
         selectedOption: null,
         options: [{
+          id: 7878979845,
           name: 'Nonfat',
           price: .25
         },
         {
+          id: 654841212,
           name: '2%',
           price: .50
         },
         {
+          id: 9876513524,
           name: 'Whole',
           price: .50
         }
@@ -66,16 +75,52 @@ export class CoffeeOrderService {
     return of(demoAdditions);
   }
 
+  private deduplicateAdditions(additions: CoffeeAddition[], addition: CoffeeAddition): CoffeeAddition[] {
+    const additionInstance = additions.find(currentAddition => currentAddition.id === addition.id);
+    if (!additionInstance) {
+      return additions;
+    } else {
+      return additions.filter((currentAddition) => {
+        if (currentAddition.id !== additionInstance.id) {
+          return true;
+        } else {
+          if (currentAddition.selectedOption.id !== additionInstance.selectedOption.id) {
+            return true;
+          }
+        }
+      });
+    }
+  }
+
   public addAddition(order: CoffeeOrder, addition: CoffeeAddition, option: CoffeeAdditionOption): void {
-    console.log('add!');
-    const additions = [...order.additions, addition];
-    const total = order.total + option.price;
+    const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
+    const additions = [...filteredAdditions, {...addition, selectedOption: option}];
+    const additionTotal = additions.reduce((total, addition) => {
+      total += addition.selectedOption.price;
+      return total;
+    }, 0)
+    const total = order.product.price + additionTotal;
+
     this.order.next({...order, additions, total});
   }
 
-  public removeAddition(order: CoffeeOrder, addition: CoffeeAddition, option: CoffeeAdditionOption): void {
-    const additions = order.additions.filter(currentAddition => currentAddition.id !== addition.id);
-    const total = order.total - option.price;
+  public removeAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
+    const additionInstance = order.additions.find(currentAddition => currentAddition.id === addition.id);
+    const additions = order.additions.filter((currentAddition) => {
+      if (currentAddition.id !== additionInstance.id) {
+        return true;
+      } else {
+        if (currentAddition.selectedOption.id !== additionInstance.selectedOption.id) {
+          return true;
+        }
+      }
+    });
+    const additionTotal = additions.reduce((total, addition) => {
+      total += addition.selectedOption.price;
+      return total;
+    }, 0)
+    const total = order.product.price + additionTotal;
+
     this.order.next({...order, additions, total});
   }
 }

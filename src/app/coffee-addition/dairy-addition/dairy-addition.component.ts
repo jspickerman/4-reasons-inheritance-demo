@@ -19,17 +19,17 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
     super(orderService);
    }
 
-  ngOnInit() {
-    super.ngOnInit();
-    this.showCappuccinoMessage = this.suggestCappuccino();
-    console.log(this.showCappuccinoMessage);
-  }
+  // ngOnInit() {
+  //   super.ngOnInit();
+  //   this.showCappuccinoMessage = this.suggestCappuccino();
+  //   console.log(this.showCappuccinoMessage);
+  // }
 
-    setFoam(foam: DairyFoam): void {
-    this.addition.foam = foam;
-  }
+  //   setFoam(foam: DairyFoam): void {
+  //   this.addition.foam = foam;
+  // }
   
-  suggestCappuccino(): boolean {
-    return (this.addition.foam === DairyFoam.EXTRA && this.coffeeOrder.product !== CoffeeProducts.CAPPUCCINO);
-  }
+  // suggestCappuccino(): boolean {
+  //   // return (this.addition.foam === DairyFoam.EXTRA && this.coffeeOrder.product !== CoffeeProducts.CAPPUCCINO);
+  // }
 }

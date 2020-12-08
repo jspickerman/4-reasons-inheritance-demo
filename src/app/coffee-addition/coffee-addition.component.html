@@ -1,8 +1,8 @@
 <div class="addition-container">
   <h4>{{addition.name}}</h4>
-  <select [value]="selectedOption">
-    <option>None</option>
-    <option *ngFor="let option of addition.options" (click)="setSelection(option)">
+  <select [(ngModel)]="selectedOption" (change)="saveSelection()">
+    <option [ngValue]="null">None</option>
+    <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} - {{option.price | currency}}
     </option>
   </select>

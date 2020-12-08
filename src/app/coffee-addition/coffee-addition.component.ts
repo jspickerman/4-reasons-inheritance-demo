@@ -35,12 +35,15 @@ export class CoffeeAdditionComponent implements OnInit {
     }
   }
 
-  public setSelection(option: CoffeeAdditionOption): void {
-    this.selectedOption = option;
-    this.orderService.addAddition(this.coffeeOrder, this.addition, option);
+  public saveSelection(): void {
+    if (this.selectedOption) {
+      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOption);
+    } else {
+      this.orderService.removeAddition(this.coffeeOrder, this.addition);
+    }
   }
 
   public clearSelection(): void {
-    this.orderService.removeAddition(this.coffeeOrder, this.addition, this.selectedOption);
+    this.orderService.removeAddition(this.coffeeOrder, this.addition);
   }
 }
