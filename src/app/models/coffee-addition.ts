@@ -11,10 +11,21 @@ export interface CoffeeAdditionOption {
   price: number;
 }
 
+export enum DairyFoam {
+    REGULAR = 'Regular',
+    EXTRA = 'Extra'
+}
+
+export const dairyFoams: DairyFoam[] = [
+  DairyFoam.EXTRA,
+  DairyFoam.REGULAR
+]
+
 export interface DairyAddition extends CoffeeAddition {
     steamed: boolean;
     temperature: number;
     foam?: DairyFoam;
+    foamOptions: DairyFoam[];
 }
 
 export interface CoffeeProduct {
@@ -32,8 +43,3 @@ export const CoffeeProducts: CoffeeProduct[] = [
     price: 4.00
   }
 ]
-
-export enum DairyFoam {
-    REGULAR = 'Regular',
-    EXTRA = 'Extra'
-}

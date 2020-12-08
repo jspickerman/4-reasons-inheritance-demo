@@ -9,8 +9,9 @@
 
   <ng-container *ngIf="selectedOption">
     <span>Foam?</span>
-    <div>
-      <input *ngFor="foamOptions in addition.foam" type="checkbox">
+    <div *ngFor="let foamOption of addition.foamOptions">
+      <span>{{foamOption}}</span>
+      <input type="checkbox">
     </div>
   </ng-container>
 </div>

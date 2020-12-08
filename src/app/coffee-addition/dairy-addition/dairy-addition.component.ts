@@ -19,11 +19,9 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
     super(orderService);
    }
 
-  // ngOnInit() {
-  //   super.ngOnInit();
-  //   this.showCappuccinoMessage = this.suggestCappuccino();
-  //   console.log(this.showCappuccinoMessage);
-  // }
+  ngOnInit() {
+    super.ngOnInit();
+  }
 
   //   setFoam(foam: DairyFoam): void {
   //   this.addition.foam = foam;

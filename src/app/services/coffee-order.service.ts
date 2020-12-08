@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyAddition } from '../models/coffee-addition';
+import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyAddition, dairyFoams } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
 @Injectable()
@@ -55,6 +55,8 @@ export class CoffeeOrderService {
         steamed: false,
         temperature: 155,
         selectedOption: null,
+        foam: null,
+        foamOptions: dairyFoams,
         options: [{
           id: 7878979845,
           name: 'Nonfat',
