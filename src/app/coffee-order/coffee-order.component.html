@@ -8,9 +8,15 @@
   </div>
 
   <div class="card-column">
-    <ng-container *ngIf="availableAdditions$ | async as additions">
+    <ng-container *ngIf="standardAdditions$ | async as additions">
       <div class="addition-wrapper" *ngFor="let addition of additions">
         <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="syrupAdditions$ | async as syrupAdditions">
+      <div class="addition-wrapper" *ngFor="let syrupAddition of syrupAdditions">
+        <app-syrup-addition [coffeeOrder]="coffeeOrder" [addition]="syrupAddition"></app-syrup-addition>
       </div>
     </ng-container>
 
