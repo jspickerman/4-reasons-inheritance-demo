@@ -18,4 +18,11 @@ export class SyrupAdditionComponent extends CoffeeAdditionComponent implements O
   ngOnInit() {
   }
 
+  increase(): void {
+    this.quantity++;
+  }
+
+  decrease(): void {
+    this.quantity = this.quantity-- > 0 ? this.quantity-- : 0;
+  }
 }
