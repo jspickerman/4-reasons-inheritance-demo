@@ -48,19 +48,39 @@ export class CoffeeOrderService {
           id: 98765131,
           name: 'White Sugar',
           price: .25
+          },
+          {
+            id: 98765315,
+            name: 'Raw Sugar',
+            price: .50
+          },
+          {
+            id: 9874561,
+            name: 'Brown Sugar',
+            price: .50
+        }]
+      },
+      {
+        name: 'Syrup',
+        id: 59898978,
+        selectedOption: null,
+        options: [{
+          id: 9876517831,
+          name: 'Vanilla',
+          price: .25
         },
         {
-          id: 98765315,
-          name: 'Raw Sugar',
+          id: 9877894315,
+          name: 'Caramel',
           price: .50
         },
         {
-          id: 9874561,
-          name: 'Brown Sugar',
+          id: 9874578161,
+          name: 'Hazelnut',
           price: .50
-        }
-      ]
-    }];
+        }]
+      }
+    ];
     return of(demoAdditions);
   }
 

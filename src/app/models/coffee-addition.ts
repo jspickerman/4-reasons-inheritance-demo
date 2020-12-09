@@ -26,7 +26,8 @@ export interface CoffeeProduct {
 export enum AdditionTypes {
   DAIRY = 'Dairy',
   SUGAR = 'Sugar',
-  FOAM = 'Foam'
+  FOAM = 'Foam',
+  SYRUP = 'Syrup'
 }
 
 export enum DairyFoam {
