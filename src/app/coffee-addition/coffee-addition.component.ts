@@ -28,6 +28,10 @@ export class CoffeeAdditionComponent implements OnInit {
     return this.coffeeOrder.additions.some((addition) => addition.id === this.addition.id);
   }
 
+  public showPrice(additionOption: CoffeeAdditionOption): boolean {
+    return (additionOption.price > 0);
+  }
+
   public preselectCurrentOption(): void {
     const currentAdditionSelection = this.coffeeOrder.additions.find(currentAddition => currentAddition.id === this.addition.id);
     if (currentAdditionSelection) {

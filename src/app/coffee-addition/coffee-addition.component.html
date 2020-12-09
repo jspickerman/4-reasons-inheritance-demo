@@ -3,7 +3,10 @@
   <select class="addition-select" [(ngModel)]="selectedOption" (change)="saveSelection()">
     <option [ngValue]="null">None</option>
     <option *ngFor="let option of addition.options" [ngValue]="option">
-      {{option.name}} - {{option.price | currency}}
+      {{option.name}} 
+      <ng-container *ngIf="showPrice(option)">
+      - {{option.price | currency}}
+      </ng-container>
     </option>
   </select>
 </div>
