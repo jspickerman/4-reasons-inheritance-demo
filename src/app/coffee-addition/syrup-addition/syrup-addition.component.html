@@ -1,6 +1,7 @@
 <div class="addition-container">
   <h4 class="label">{{addition.name}}</h4>
   <select class="addition-select" [(ngModel)]="selectedOption" (change)="saveSelection()">
+    <option [ngValue]="null">None</option>
     <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} 
       <ng-container *ngIf="showPrice(option)">
@@ -8,14 +9,8 @@
       </ng-container>
     </option>
   </select>
-
-  <!-- <div class="foam-container">
-    <h5 class="label">Foam</h5>
-    <select class="addition-select" [(ngModel)]="selectedFoam" (change)="saveFoam()">
-      <option *ngFor="let foam of addition.foamOptions" [ngValue]="foam">
-        {{foam}}
-      </option>
-    </select>
-    <span class="nudge" [hidden]="!showCappuccinoMessage">Make Cappuccino?</span>
-  </div> -->
+  <div class="card-row">
+    <i class="fas fa-minus-circle"></i>
+    <i class="fas fa-plus-circle"></i>
+  </div>
 </div>

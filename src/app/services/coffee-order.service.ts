@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyAddition, DairyFoam } from '../models/coffee-addition';
+import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyFoam } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
 /* Dear Reader: Don't worry about this code too much! We're faking a "coffee products" API here, just know that the public functions
@@ -18,16 +18,12 @@ export class CoffeeOrderService {
     additions: [{        
       name: 'Dairy',
       id: 59898982,
-      steamed: false,
-      temperature: 155,
       selectedOption: {
         id: 654841212,
         name: '2%',
         price: 0.00
       },
-      options: [],
-      selectedFoam: DairyFoam.REGULAR,
-      foamOptions: [DairyFoam.REGULAR, DairyFoam.EXTRA],
+      options: []
     }],
     total: 3.90
   }; 
@@ -39,8 +35,9 @@ export class CoffeeOrderService {
     this.order$ = this.order.asObservable() as Observable<CoffeeOrder>;
   }
 
+
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
-    const demoAdditions: CoffeeAddition[] = [{
+    const demoAdditions = [{
         name: 'Sugar',
         id: 59898981,
         selectedOption: null,
@@ -79,24 +76,15 @@ export class CoffeeOrderService {
           name: 'Hazelnut',
           price: .50
         }]
-      }
-    ];
-    return of(demoAdditions);
-  }
-
-  public getDemoDairyAdditions(): Observable<DairyAddition[]> {
-    const demoAdditions: DairyAddition[] = [{
+      },
+      {
         name: 'Dairy',
         id: 59898982,
-        steamed: false,
-        temperature: 155,
         selectedOption: {
           id: 654841212,
           name: '2%',
           price: 0.00
         },
-        selectedFoam: DairyFoam.REGULAR,
-        foamOptions: [DairyFoam.REGULAR, DairyFoam.EXTRA],
         options: [{
           id: 7878979845,
           name: 'Nonfat',
@@ -113,9 +101,43 @@ export class CoffeeOrderService {
           price: 0.00
         }
       ]
-    }];
+    }
+    ];
     return of(demoAdditions);
   }
+
+  // public getDemoDairyAdditions(): Observable<DairyAddition[]> {
+  //   const demoAdditions: DairyAddition[] = [{
+  //       name: 'Dairy',
+  //       id: 59898982,
+  //       steamed: false,
+  //       temperature: 155,
+  //       selectedOption: {
+  //         id: 654841212,
+  //         name: '2%',
+  //         price: 0.00
+  //       },
+  //       selectedFoam: DairyFoam.REGULAR,
+  //       foamOptions: [DairyFoam.REGULAR, DairyFoam.EXTRA],
+  //       options: [{
+  //         id: 7878979845,
+  //         name: 'Nonfat',
+  //         price: 0.00
+  //       },
+  //       {
+  //         id: 654841212,
+  //         name: '2%',
+  //         price: 0.00
+  //       },
+  //       {
+  //         id: 9876513524,
+  //         name: 'Whole',
+  //         price: 0.00
+  //       }
+  //     ]
+  //   }];
+  //   return of(demoAdditions);
+  // }
 
   private deduplicateAdditions(additions: CoffeeAddition[], addition: CoffeeAddition): CoffeeAddition[] {
     const additionInstance = additions.find(currentAddition => currentAddition.id === addition.id);
@@ -166,15 +188,15 @@ export class CoffeeOrderService {
     this.order.next({...order, additions, total});
   }
 
-  public addFoam(order: CoffeeOrder, addition: DairyAddition, selectedFoam: DairyFoam): void {
-    const updatedAddition = {...addition, selectedFoam};
-    const additions = [...order.additions, {...updatedAddition}];
-    this.order.next({...order, additions});
-  }
+  // public addFoam(order: CoffeeOrder, addition: DairyAddition, selectedFoam: DairyFoam): void {
+  //   const updatedAddition = {...addition, selectedFoam};
+  //   const additions = [...order.additions, {...updatedAddition}];
+  //   this.order.next({...order, additions});
+  // }
 
-  public removeFoam(order: CoffeeOrder, addition: DairyAddition): void {
-    const updatedAddition = {...addition, selectedFoam: null};
-    const additions = [...order.additions, {...updatedAddition}];
-    this.order.next({...order, additions});
-  }
+  // public removeFoam(order: CoffeeOrder, addition: DairyAddition): void {
+  //   const updatedAddition = {...addition, selectedFoam: null};
+  //   const additions = [...order.additions, {...updatedAddition}];
+  //   this.order.next({...order, additions});
+  // }
 }

@@ -11,13 +11,6 @@ export interface CoffeeAdditionOption {
   price: number;
 }
 
-export interface DairyAddition extends CoffeeAddition {
-  steamed: boolean;
-  temperature: number;
-  selectedFoam: DairyFoam;
-  foamOptions: DairyFoam[];
-}
-
 export interface CoffeeProduct {
   name: string;
   price: number;

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AdditionTypes, CoffeeProducts, DairyAddition, DairyFoam } from '../../models/coffee-addition';
+import { AdditionTypes, CoffeeAddition, CoffeeProducts, DairyFoam } from '../../models/coffee-addition';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
 
@@ -11,9 +11,9 @@ import { CoffeeAdditionComponent } from '../coffee-addition.component';
 export class DairyAdditionComponent extends CoffeeAdditionComponent implements OnInit {
 
   @Input()
-  addition: DairyAddition;
+  addition: CoffeeAddition;
 
-  selectedFoam: DairyFoam;
+  // selectedFoam: DairyFoam;
   showCappuccinoMessage: boolean;
 
   constructor(orderService: CoffeeOrderService) {
@@ -26,18 +26,18 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
   }
 
   saveFoam(): void {
-    if (this.selectedFoam) {
-      this.orderService.addFoam(this.coffeeOrder, this.addition, this.selectedFoam);
-      this.showCappuccinoMessage = this.suggestCappuccino();
-    } else {
-      this.orderService.removeFoam(this.coffeeOrder, this.addition);
-    }
+    // if (this.selectedFoam) {
+    //   this.orderService.addFoam(this.coffeeOrder, this.addition, this.selectedFoam);
+    //   this.showCappuccinoMessage = this.suggestCappuccino();
+    // } else {
+    //   this.orderService.removeFoam(this.coffeeOrder, this.addition);
+    // }
   }
   
-  suggestCappuccino(): boolean {
-    return (
-        this.selectedFoam === DairyFoam.EXTRA && 
-        this.coffeeOrder.product.name !== CoffeeProducts.CAPPUCCINO
-    );
-  }
+  // suggestCappuccino(): boolean {
+  //   return (
+  //       this.selectedFoam === DairyFoam.EXTRA && 
+  //       this.coffeeOrder.product.name !== CoffeeProducts.CAPPUCCINO
+  //   );
+  // }
 }
