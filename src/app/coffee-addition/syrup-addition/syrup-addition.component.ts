@@ -9,6 +9,8 @@ import { CoffeeAdditionComponent } from '../coffee-addition.component';
 })
 export class SyrupAdditionComponent extends CoffeeAdditionComponent implements OnInit {
 
+  quantity: number = 1;
+
   constructor(orderService: CoffeeOrderService) {
     super(orderService);
   }

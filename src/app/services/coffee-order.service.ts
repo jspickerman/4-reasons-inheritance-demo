@@ -21,7 +21,8 @@ export class CoffeeOrderService {
       selectedOption: {
         id: 654841212,
         name: '2%',
-        price: 0.00
+        price: 0.00,
+        quantity: 1
       },
       options: []
     }],
@@ -35,26 +36,28 @@ export class CoffeeOrderService {
     this.order$ = this.order.asObservable() as Observable<CoffeeOrder>;
   }
 
-
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
     const demoAdditions = [{
         name: 'Sugar',
         id: 59898981,
         selectedOption: null,
         options: [{
-          id: 98765131,
-          name: 'White Sugar',
-          price: .25
+            id: 98765131,
+            name: 'White Sugar',
+            price: .25,
+            quantity: 0
           },
           {
             id: 98765315,
             name: 'Raw Sugar',
-            price: .50
+            price: .50,
+            quantity: 0
           },
           {
             id: 9874561,
             name: 'Brown Sugar',
-            price: .50
+            price: .50,
+            quantity: 0
         }]
       },
       {
@@ -64,17 +67,20 @@ export class CoffeeOrderService {
         options: [{
           id: 9876517831,
           name: 'Vanilla',
-          price: .25
+          price: .25,
+          quantity: 0
         },
         {
           id: 9877894315,
           name: 'Caramel',
-          price: .50
+          price: .50,
+          quantity: 0
         },
         {
           id: 9874578161,
           name: 'Hazelnut',
-          price: .50
+          price: .50,
+          quantity: 0
         }]
       },
       {
@@ -83,22 +89,26 @@ export class CoffeeOrderService {
         selectedOption: {
           id: 654841212,
           name: '2%',
-          price: 0.00
+          price: 0.00,
+          quantity: 0
         },
         options: [{
           id: 7878979845,
           name: 'Nonfat',
-          price: 0.00
+          price: 0.00,
+          quantity: 0
         },
         {
           id: 654841212,
           name: '2%',
-          price: 0.00
+          price: 0.00,
+          quantity: 0
         },
         {
           id: 9876513524,
           name: 'Whole',
-          price: 0.00
+          price: 0.00,
+          quantity: 0
         }
       ]
     }
