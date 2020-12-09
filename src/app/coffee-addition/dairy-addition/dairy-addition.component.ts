@@ -22,6 +22,7 @@ export class DairyAdditionComponent extends CoffeeAdditionComponent implements O
 
   ngOnInit(): void {
     super.ngOnInit();
+    console.log(this.selectedOption);
   }
 
   saveFoam(): void {

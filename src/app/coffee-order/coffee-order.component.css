@@ -1,13 +1,13 @@
 .card {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 
   padding: .5em 1em;
   border: 1px solid #ece9e9;
   border-radius: 5px;
   box-shadow: -4px 1px 4px #ece9e9;
-  width: 500px;
+  width: 400px;
 }
 
 .card-column {
@@ -27,9 +27,17 @@
   margin: 0;
 }
 
-.summary-section {
+.summary-container {
   margin-right: 1em;
   /* border-right: 1px solid #ece9e9; */
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 2em;
 }
 
 .card-drink {

@@ -3,6 +3,9 @@ import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyAddition, DairyFoam } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
+/* Dear Reader: Don't worry about this code too much! We're faking a "coffee products" API here, just know that the public functions
+return Observables of coffee data and can be used to add additions to an order*/
+
 @Injectable()
 export class CoffeeOrderService {
   private defaultOrder: CoffeeOrder = {
@@ -12,7 +15,20 @@ export class CoffeeOrderService {
       name: 'Latte',
       price: 3.90
     },
-    additions: [],
+    additions: [{        
+      name: 'Dairy',
+      id: 59898982,
+      steamed: false,
+      temperature: 155,
+      selectedOption: {
+        id: 654841212,
+        name: '2%',
+        price: 0.00
+      },
+      options: [],
+      selectedFoam: DairyFoam.REGULAR,
+      foamOptions: [DairyFoam.REGULAR, DairyFoam.EXTRA],
+    }],
     total: 3.90
   }; 
   private order: BehaviorSubject<CoffeeOrder>;

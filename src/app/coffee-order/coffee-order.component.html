@@ -1,8 +1,10 @@
 <div class="card" *ngIf="coffeeOrder" >
-  <div class="card-column summary-section">
-    <i class="fas fa-mug-hot card-drink"></i>
-    <h2 class="no-margin">{{coffeeOrder.product.name}}</h2>
-    <span>{{coffeeOrder.total | currency}}</span>
+  <div class="card-column summary-container">
+    <div class="summary">    
+      <i class="fas fa-mug-hot card-drink"></i>
+      <h2 class="no-margin">{{coffeeOrder.product.name}}</h2>
+      <span>{{coffeeOrder.total | currency}}</span>
+    </div>
   </div>
 
   <div class="card-column">

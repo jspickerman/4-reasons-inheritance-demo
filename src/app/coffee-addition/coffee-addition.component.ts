@@ -29,7 +29,7 @@ export class CoffeeAdditionComponent implements OnInit {
   }
 
   public preselectCurrentOption(): void {
-    const currentAdditionSelection = this.coffeeOrder.additions.find((addition) => addition.id === this.addition.id);
+    const currentAdditionSelection = this.coffeeOrder.additions.find(currentAddition => currentAddition.id === this.addition.id);
     if (currentAdditionSelection) {
       this.selectedOption = currentAdditionSelection.selectedOption;
     }

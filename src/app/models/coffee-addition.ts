@@ -30,8 +30,8 @@ export enum AdditionTypes {
 }
 
 export enum DairyFoam {
-    REGULAR = 'Regular',
-    EXTRA = 'Extra'
+  REGULAR = 'Regular',
+  EXTRA = 'Extra'
 }
 
 export enum CoffeeProducts {
