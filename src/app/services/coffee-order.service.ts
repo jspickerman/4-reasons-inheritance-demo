@@ -45,19 +45,19 @@ export class CoffeeOrderService {
             id: 98765131,
             name: 'White Sugar',
             price: .25,
-            quantity: 0
+            quantity: 1
           },
           {
             id: 98765315,
             name: 'Raw Sugar',
             price: .50,
-            quantity: 0
+            quantity: 1
           },
           {
             id: 9874561,
             name: 'Brown Sugar',
             price: .50,
-            quantity: 0
+            quantity: 1
         }]
       },
       {
@@ -68,19 +68,19 @@ export class CoffeeOrderService {
           id: 9876517831,
           name: 'Vanilla',
           price: .25,
-          quantity: 0
+          quantity: 1
         },
         {
           id: 9877894315,
           name: 'Caramel',
           price: .50,
-          quantity: 0
+          quantity: 1
         },
         {
           id: 9874578161,
           name: 'Hazelnut',
           price: .50,
-          quantity: 0
+          quantity: 1
         }]
       },
       {
@@ -90,25 +90,25 @@ export class CoffeeOrderService {
           id: 654841212,
           name: '2%',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         },
         options: [{
           id: 7878979845,
           name: 'Nonfat',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         },
         {
           id: 654841212,
           name: '2%',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         },
         {
           id: 9876513524,
           name: 'Whole',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         }]
       },
       {
@@ -118,25 +118,25 @@ export class CoffeeOrderService {
           id: 654841712,
           name: 'Regular',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         },
         options: [{
           id: 654841778,
           name: 'Light',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         },
         {
           id: 654841712,
           name: 'Regular',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         },
         {
           id: 654847212,
           name: 'Extra',
           price: 0.00,
-          quantity: 0
+          quantity: 1
         }]
       }
     ];
@@ -161,6 +161,8 @@ export class CoffeeOrderService {
   }
 
   public addAddition(order: CoffeeOrder, addition: CoffeeAddition, option: CoffeeAdditionOption): void {
+    console.log(addition);
+    console.log(option);
     const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
     const additions = [...filteredAdditions, {...addition, selectedOption: option}];
     const additionTotal = additions.reduce((total, addition) => {
