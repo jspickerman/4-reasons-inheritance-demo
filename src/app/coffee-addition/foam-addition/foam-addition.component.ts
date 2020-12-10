@@ -10,7 +10,6 @@ import { CoffeeAdditionComponent } from '../coffee-addition.component';
 })
 export class FoamAdditionComponent extends CoffeeAdditionComponent implements OnInit {
 
-  selectedFoam: DairyFoam;
   showCappuccinoMessage: boolean;
 
   constructor(orderService: CoffeeOrderService) {
@@ -21,18 +20,18 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
     super.ngOnInit();
   }
 
-  saveFoam(): void {
-    if (this.selectedFoam) {
-      this.orderService.addFoam(this.coffeeOrder, this.addition, this.selectedFoam);
+  public saveSelection(): void {
+    if (this.selectedOption) {
+      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOption);
       this.showCappuccinoMessage = this.suggestCappuccino();
     } else {
-      this.orderService.removeFoam(this.coffeeOrder, this.addition);
+      this.orderService.removeAddition(this.coffeeOrder, this.addition);
     }
   }
   
-  suggestCappuccino(): boolean {
+  public suggestCappuccino(): boolean {
     return (
-        this.selectedFoam === DairyFoam.EXTRA && 
+        this.selectedOption.name === DairyFoam.EXTRA && 
         this.coffeeOrder.product.name !== CoffeeProducts.CAPPUCCINO
     );
   }

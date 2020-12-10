@@ -10,13 +10,5 @@
     </option>
   </select>
 
-  <div class="foam-container">
-    <h5 class="label">Foam</h5>
-    <select class="addition-select" [(ngModel)]="selectedFoam" (change)="saveFoam()">
-      <option *ngFor="let option of addition.options" [ngValue]="option">
-        {{option}}
-      </option>
-    </select>
-    <span class="nudge">Make Cappuccino?</span>
-  </div>
+  <span *ngIf="showCappuccinoMessage" class="nudge">Make Cappuccino?</span>
 </div>
