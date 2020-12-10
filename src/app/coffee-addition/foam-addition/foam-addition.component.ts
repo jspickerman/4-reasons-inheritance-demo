@@ -26,6 +26,7 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
       this.showCappuccinoMessage = this.suggestCappuccino();
     } else {
       this.orderService.removeAddition(this.coffeeOrder, this.addition);
+      this.showCappuccinoMessage = false;
     }
   }
   

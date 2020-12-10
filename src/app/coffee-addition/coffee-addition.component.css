@@ -1,8 +1,8 @@
 .addition-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 90px;
+  padding: 0 1em
 }
 
 .addition-select {
