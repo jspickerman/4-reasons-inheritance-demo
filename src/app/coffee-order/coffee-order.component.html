@@ -28,7 +28,7 @@
 
     <ng-container *ngIf="foamAdditions$ | async as foamAdditions">
       <div class="addition-wrapper" *ngFor="let foamAddition of foamAdditions">
-        <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="foamAddition"></app-dairy-addition>
+        <app-foam-addition [coffeeOrder]="coffeeOrder" [addition]="foamAddition"></app-foam-addition>
       </div>
     </ng-container>
   </div>
