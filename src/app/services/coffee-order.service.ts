@@ -109,45 +109,39 @@ export class CoffeeOrderService {
           name: 'Whole',
           price: 0.00,
           quantity: 0
-        }
-      ]
-    }
+        }]
+      },
+      {
+        name: 'Foam',
+        id: 59898985,
+        selectedOption: {
+          id: 654841712,
+          name: 'Regular',
+          price: 0.00,
+          quantity: 0
+        },
+        options: [{
+          id: 654841778,
+          name: 'Light',
+          price: 0.00,
+          quantity: 0
+        },
+        {
+          id: 654841712,
+          name: 'Regular',
+          price: 0.00,
+          quantity: 0
+        },
+        {
+          id: 654847212,
+          name: 'Extra',
+          price: 0.00,
+          quantity: 0
+        }]
+      }
     ];
     return of(demoAdditions);
   }
-
-  // public getDemoDairyAdditions(): Observable<DairyAddition[]> {
-  //   const demoAdditions: DairyAddition[] = [{
-  //       name: 'Dairy',
-  //       id: 59898982,
-  //       steamed: false,
-  //       temperature: 155,
-  //       selectedOption: {
-  //         id: 654841212,
-  //         name: '2%',
-  //         price: 0.00
-  //       },
-  //       selectedFoam: DairyFoam.REGULAR,
-  //       foamOptions: [DairyFoam.REGULAR, DairyFoam.EXTRA],
-  //       options: [{
-  //         id: 7878979845,
-  //         name: 'Nonfat',
-  //         price: 0.00
-  //       },
-  //       {
-  //         id: 654841212,
-  //         name: '2%',
-  //         price: 0.00
-  //       },
-  //       {
-  //         id: 9876513524,
-  //         name: 'Whole',
-  //         price: 0.00
-  //       }
-  //     ]
-  //   }];
-  //   return of(demoAdditions);
-  // }
 
   private deduplicateAdditions(additions: CoffeeAddition[], addition: CoffeeAddition): CoffeeAddition[] {
     const additionInstance = additions.find(currentAddition => currentAddition.id === addition.id);
@@ -170,7 +164,7 @@ export class CoffeeOrderService {
     const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
     const additions = [...filteredAdditions, {...addition, selectedOption: option}];
     const additionTotal = additions.reduce((total, addition) => {
-      total += addition.selectedOption.price;
+      total += addition.selectedOption.price * addition.selectedOption.quantity;
       return total;
     }, 0)
     const total = order.product.price + additionTotal;
@@ -198,15 +192,15 @@ export class CoffeeOrderService {
     this.order.next({...order, additions, total});
   }
 
-  // public addFoam(order: CoffeeOrder, addition: DairyAddition, selectedFoam: DairyFoam): void {
-  //   const updatedAddition = {...addition, selectedFoam};
-  //   const additions = [...order.additions, {...updatedAddition}];
-  //   this.order.next({...order, additions});
-  // }
+  public addFoam(order: CoffeeOrder, addition: CoffeeAddition, selectedFoam: DairyFoam): void {
+    const updatedAddition = {...addition, selectedFoam};
+    const additions = [...order.additions, {...updatedAddition}];
+    this.order.next({...order, additions});
+  }
 
-  // public removeFoam(order: CoffeeOrder, addition: DairyAddition): void {
-  //   const updatedAddition = {...addition, selectedFoam: null};
-  //   const additions = [...order.additions, {...updatedAddition}];
-  //   this.order.next({...order, additions});
-  // }
+  public removeFoam(order: CoffeeOrder, addition: CoffeeAddition): void {
+    const updatedAddition = {...addition, selectedFoam: null};
+    const additions = [...order.additions, {...updatedAddition}];
+    this.order.next({...order, additions});
+  }
 }

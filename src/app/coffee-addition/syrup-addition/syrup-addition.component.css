@@ -2,7 +2,10 @@
 
 .quantity-row {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   margin: .5em 0;
+}
+
+.quantity-row .icon-button {
+  margin: 0 .5em;
 }

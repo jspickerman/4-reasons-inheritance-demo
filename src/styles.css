@@ -19,3 +19,27 @@ body, span, p {
 .label {
   margin: .5em;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-button:hover {
+  cursor: pointer;
+}
+
+.no-select {
+  user-select: none;
+}
+
+.nudge {
+  margin: .5em;
+  padding: .5em;
+  border-radius: 25px;
+  background-color: #713e8a;
+  font-size: .75em;
+  color: #fff;
+  text-align: center;
+}

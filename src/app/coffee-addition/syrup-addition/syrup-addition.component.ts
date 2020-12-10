@@ -20,9 +20,13 @@ export class SyrupAdditionComponent extends CoffeeAdditionComponent implements O
 
   increase(): void {
     this.quantity++;
+    this.selectedOption.quantity = this.quantity;
+    this.saveSelection();
   }
 
   decrease(): void {
-    this.quantity = this.quantity-- > 0 ? this.quantity-- : 0;
+    this.quantity = this.quantity-- > 1 ? this.quantity-- : 1;
+    this.selectedOption.quantity = this.quantity;
+    this.saveSelection();
   }
 }

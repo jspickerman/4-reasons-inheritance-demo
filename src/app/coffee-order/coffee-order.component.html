@@ -2,12 +2,12 @@
   <div class="card-column summary-container">
     <div class="summary">    
       <i class="fas fa-mug-hot card-drink"></i>
-      <h2 class="no-margin">{{coffeeOrder.product.name}}</h2>
+      <h2>{{coffeeOrder.product.name}}</h2>
       <span>{{coffeeOrder.total | currency}}</span>
     </div>
   </div>
 
-  <div class="card-column">
+  <div class="card-column addition-sidebar">
     <ng-container *ngIf="standardAdditions$ | async as additions">
       <div class="addition-wrapper" *ngFor="let addition of additions">
         <app-coffee-addition [coffeeOrder]="coffeeOrder" [addition]="addition"></app-coffee-addition>
@@ -23,6 +23,12 @@
     <ng-container *ngIf="dairyAdditions$ | async as dairyAdditions">
       <div class="addition-wrapper" *ngFor="let dairyAddition of dairyAdditions">
         <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="dairyAddition"></app-dairy-addition>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="foamAdditions$ | async as foamAdditions">
+      <div class="addition-wrapper" *ngFor="let foamAddition of foamAdditions">
+        <app-dairy-addition [coffeeOrder]="coffeeOrder" [addition]="foamAddition"></app-dairy-addition>
       </div>
     </ng-container>
   </div>

@@ -9,9 +9,11 @@
       </ng-container>
     </option>
   </select>
-  <div class="quantity-row">
-    <i class="fas fa-minus-circle icon-button" (click)="increase()"></i>
-    <span>{{quantity}}</span>
-    <i class="fas fa-plus-circle icon-button" (click)="decrease()"></i>
+  <div class="quantity-row" *ngIf="selectedOption">
+    <div class="no-select">
+      <i class="fas fa-minus-circle icon-button" (click)="decrease()"></i>
+      <span>{{quantity}}</span>
+      <i class="fas fa-plus-circle icon-button" (click)="increase()"></i>
+    </div>
   </div>
 </div>

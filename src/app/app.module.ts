@@ -8,6 +8,7 @@ import { CoffeeOrderService } from './services/coffee-order.service';
 import { CoffeeOrderComponent } from './coffee-order/coffee-order.component';
 import { DairyAdditionComponent } from './coffee-addition/dairy-addition/dairy-addition.component';
 import { SyrupAdditionComponent } from './coffee-addition/syrup-addition/syrup-addition.component';
+import { FoamAdditionComponent } from './coffee-addition/foam-addition/foam-addition.component';
 
 /**
  * https://www.npmjs.com/package/angular-font-awesome
@@ -16,7 +17,7 @@ import { SyrupAdditionComponent } from './coffee-addition/syrup-addition/syrup-a
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, CoffeeAdditionComponent, CoffeeOrderComponent, DairyAdditionComponent, SyrupAdditionComponent ],
+  declarations: [ AppComponent, CoffeeAdditionComponent, CoffeeOrderComponent, DairyAdditionComponent, SyrupAdditionComponent, FoamAdditionComponent ],
   bootstrap:    [ AppComponent ],
   providers: [CoffeeOrderService]
 })
