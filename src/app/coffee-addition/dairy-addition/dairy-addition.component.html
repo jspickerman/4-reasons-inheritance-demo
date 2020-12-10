@@ -1,5 +1,6 @@
 <div class="addition-container">
   <h4 class="label">{{addition.name}}</h4>
+  <span>{{selectedOption | json}}</span>
   <select class="addition-select" [(ngModel)]="selectedOption" (change)="saveSelection()">
     <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} 

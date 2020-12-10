@@ -15,18 +15,29 @@ export class SyrupAdditionComponent extends CoffeeAdditionComponent implements O
     super(orderService);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    super.ngOnInit();
   }
 
-  increase(): void {
+  public increase(): void {
     this.quantity++;
     this.selectedOption.quantity = this.quantity;
     this.saveSelection();
   }
 
-  decrease(): void {
+  public decrease(): void {
     this.quantity = this.quantity-- > 1 ? this.quantity-- : 1;
     this.selectedOption.quantity = this.quantity;
     this.saveSelection();
+  }
+
+  public saveSelection(): void {
+    if (this.selectedOption) {
+      this.selectedOption.quantity = this.quantity;
+      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOption);
+    } else {
+      this.orderService.removeAddition(this.coffeeOrder, this.addition);
+      this.quantity = 1;
+    }
   }
 }

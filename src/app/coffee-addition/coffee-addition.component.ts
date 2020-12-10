@@ -22,6 +22,7 @@ export class CoffeeAdditionComponent implements OnInit {
 
   ngOnInit() {
     this.preselectCurrentOption();
+    console.log(this.selectedOption);
   }
 
   public additionSelected(): boolean {

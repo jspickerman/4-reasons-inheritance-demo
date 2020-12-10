@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { CoffeeAddition, CoffeeAdditionOption,  CoffeeProducts, DairyFoam } from '../models/coffee-addition';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { CoffeeAddition, CoffeeAdditionOption, DairyFoam } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 
 /* Dear Reader: Don't worry about this code too much! We're faking a "coffee products" API here, just know that the public functions
-return Observables of coffee data and can be used to add additions to an order*/
+return Observables of coffee data, and can be used to add additions to an order*/
 
 @Injectable()
 export class CoffeeOrderService {
@@ -21,6 +21,17 @@ export class CoffeeOrderService {
       selectedOption: {
         id: 654841212,
         name: '2%',
+        price: 0.00,
+        quantity: 1
+      },
+      options: []
+    },
+    {
+      name: 'Foam',
+      id: 59898985,
+      selectedOption: {
+        id: 654841712,
+        name: 'Regular',
         price: 0.00,
         quantity: 1
       },
@@ -86,12 +97,7 @@ export class CoffeeOrderService {
       {
         name: 'Dairy',
         id: 59898982,
-        selectedOption: {
-          id: 654841212,
-          name: '2%',
-          price: 0.00,
-          quantity: 1
-        },
+        selectedOption: null,
         options: [{
           id: 7878979845,
           name: 'Nonfat',
@@ -114,12 +120,7 @@ export class CoffeeOrderService {
       {
         name: 'Foam',
         id: 59898985,
-        selectedOption: {
-          id: 654841712,
-          name: 'Regular',
-          price: 0.00,
-          quantity: 1
-        },
+        selectedOption: null,
         options: [{
           id: 654841778,
           name: 'Light',
@@ -161,8 +162,6 @@ export class CoffeeOrderService {
   }
 
   public addAddition(order: CoffeeOrder, addition: CoffeeAddition, option: CoffeeAdditionOption): void {
-    console.log(addition);
-    console.log(option);
     const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
     const additions = [...filteredAdditions, {...addition, selectedOption: option}];
     const additionTotal = additions.reduce((total, addition) => {
