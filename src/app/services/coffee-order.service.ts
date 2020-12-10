@@ -21,35 +21,24 @@ export class CoffeeOrderService {
     return of(demoAdditions);
   }
 
-  private deduplicateAdditions(additions: CoffeeAddition[], addition: CoffeeAddition): CoffeeAddition[] {
-    const additionInstance = additions.find(currentAddition => currentAddition.id === addition.id);
-    if (!additionInstance) {
-      return additions;
-    } else {
-      return additions.filter((currentAddition) => {
-        if (currentAddition.id !== additionInstance.id) {
-          return true;
-        } else {
-          return additionInstance.selectedOptions.map((option) => {
-            return (currentAddition.selectedOptions.find(currentOption => option.id === currentOption.id));
-          });
-        }
-      });
-    }
+  private getOptionsTotal(options: CoffeeAdditionOption[]): number {
+    return options.reduce((total, option)  => {
+      total += option.price * option.quantity;
+      return total;
+    }, 0);
   }
 
-  public addAddition(order: CoffeeOrder, addition: CoffeeAddition, options: CoffeeAdditionOption[]): void {
-    const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
-    const additions = [...filteredAdditions, {...addition, selectedOptions: options}];
-    const additionTotal = additions.reduce((total, addition) => {
-      total = addition.selectedOptions.reduce((total, option) => {
-        total += option.price * option.quantity;
-        return total;
-      }, 0)
+  private getAdditionsTotal(additions: CoffeeAddition[]): number {
+    return additions.reduce((total, addition) => {
+      total += this.getOptionsTotal(addition.selectedOptions);
       return total;
-    }, 0)
-    const total = order.product.price + additionTotal;
+    }, 0);
+  }
 
+  public addAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
+    const filteredAdditions = order.additions.filter(currentAddition => currentAddition.id !== addition.id);
+    const additions = [...filteredAdditions, addition];
+    const total = order.product.price + this.getAdditionsTotal(additions);
     this.order.next({...order, additions, total});
   }
 

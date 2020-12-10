@@ -3,6 +3,7 @@ export interface CoffeeAddition {
     id: number;
     selectedOptions: CoffeeAdditionOption[];
     options: CoffeeAdditionOption[];
+    allowMultiple: boolean;
 }
 
 export interface CoffeeAdditionOption {

@@ -40,13 +40,24 @@ export class CoffeeAdditionComponent implements OnInit {
     }
   }
 
-  public parseSelection(event): void {
-    console.log(event);
+  public addSelection(): void {
+    if (this.selectedOption) {
+      if (this.addition.allowMultiple) {
+        this.selectedOptions.push(this.selectedOption);
+      } else {
+        this.selectedOptions = [this.selectedOption];
+      }
+    } else {
+      if (!this.addition.allowMultiple) {
+        this.selectedOptions = [];
+      }
+    }
+    this.saveSelection();
   }
 
   public saveSelection(): void {
     if (this.selectedOptions) {
-      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOptions);
+      this.orderService.addAddition(this.coffeeOrder, {...this.addition, selectedOptions: this.selectedOptions});
     } else {
       this.orderService.removeAddition(this.coffeeOrder, this.addition);
     }

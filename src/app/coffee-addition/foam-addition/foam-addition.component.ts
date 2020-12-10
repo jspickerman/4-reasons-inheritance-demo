@@ -22,7 +22,7 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
 
   public saveSelection(): void {
     if (this.selectedOptions.length > 0) {
-      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOptions);
+      this.orderService.addAddition(this.coffeeOrder, {...this.addition, selectedOptions: this.selectedOptions});
       this.showCappuccinoMessage = this.suggestCappuccino();
     } else {
       this.orderService.removeAddition(this.coffeeOrder, this.addition);

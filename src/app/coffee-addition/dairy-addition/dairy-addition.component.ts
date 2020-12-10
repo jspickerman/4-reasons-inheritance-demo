@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AdditionTypes, CoffeeAddition, CoffeeProducts, DairyFoam } from '../../models/coffee-addition';
+import { Component, OnInit } from '@angular/core';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
 
@@ -9,9 +8,6 @@ import { CoffeeAdditionComponent } from '../coffee-addition.component';
   styleUrls: ['./dairy-addition.component.css']
 })
 export class DairyAdditionComponent extends CoffeeAdditionComponent implements OnInit {
-
-  @Input()
-  addition: CoffeeAddition;
 
   constructor(orderService: CoffeeOrderService) {
     super(orderService);

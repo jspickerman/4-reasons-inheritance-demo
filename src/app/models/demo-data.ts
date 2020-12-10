@@ -24,7 +24,8 @@ const demoSugar: CoffeeAddition = {
       price: 0.5,
       quantity: 1
     }
-  ]
+  ],
+  allowMultiple: false
 };
 
 const demoSyrup: CoffeeAddition = {
@@ -50,7 +51,8 @@ const demoSyrup: CoffeeAddition = {
       price: 0.5,
       quantity: 0
     }
-  ]
+  ],
+  allowMultiple: true
 };
 
 const demoDairy: CoffeeAddition = {
@@ -76,7 +78,8 @@ const demoDairy: CoffeeAddition = {
       price: 0.0,
       quantity: 1
     }
-  ]
+  ],
+  allowMultiple: false
 };
 
 const demoFoam: CoffeeAddition = {
@@ -102,7 +105,8 @@ const demoFoam: CoffeeAddition = {
       price: 0.0,
       quantity: 1
     }
-  ]
+  ],
+  allowMultiple: false
 };
 
 export const demoOrder: CoffeeOrder = {
@@ -124,7 +128,8 @@ export const demoOrder: CoffeeOrder = {
           quantity: 1
         }
       ],
-      options: []
+      options: [],
+      allowMultiple: false
     },
     {
       name: "Foam",
@@ -137,7 +142,8 @@ export const demoOrder: CoffeeOrder = {
           quantity: 1
         }
       ],
-      options: []
+      options: [],
+      allowMultiple: false
     }
   ],
   total: 3.9
