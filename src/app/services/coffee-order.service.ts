@@ -2,145 +2,22 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { CoffeeAddition, CoffeeAdditionOption, DairyFoam } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
+import { demoAdditions, demoOrder } from '../models/demo-data';
 
 /* Dear Reader: Don't worry about this code too much! We're faking a "coffee products" API here, just know that the public functions
 return Observables of coffee data, and can be used to add additions to an order*/
 
 @Injectable()
 export class CoffeeOrderService {
-  private defaultOrder: CoffeeOrder = {
-    size: 'Large',
-    roast: 'medium',
-    product: {
-      name: 'Latte',
-      price: 3.90
-    },
-    additions: [{        
-      name: 'Dairy',
-      id: 59898982,
-      selectedOptions: [{
-        id: 654841212,
-        name: '2%',
-        price: 0.00,
-        quantity: 1
-      }],
-      options: []
-    },
-    {
-      name: 'Foam',
-      id: 59898985,
-      selectedOptions: [{
-        id: 654841712,
-        name: 'Regular',
-        price: 0.00,
-        quantity: 1
-      }],
-      options: []
-    }],
-    total: 3.90
-  }; 
   private order: BehaviorSubject<CoffeeOrder>;
   public order$: Observable<CoffeeOrder>
 
   constructor() { 
-    this.order = new BehaviorSubject(this.defaultOrder);
+    this.order = new BehaviorSubject(demoOrder);
     this.order$ = this.order.asObservable() as Observable<CoffeeOrder>;
   }
 
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
-    const demoAdditions = [{
-        name: 'Sugar',
-        id: 59898981,
-        selectedOptions: [],
-        options: [{
-            id: 98765131,
-            name: 'White Sugar',
-            price: .25,
-            quantity: 1
-          },
-          {
-            id: 98765315,
-            name: 'Raw Sugar',
-            price: .50,
-            quantity: 1
-          },
-          {
-            id: 9874561,
-            name: 'Brown Sugar',
-            price: .50,
-            quantity: 1
-        }]
-      },
-      {
-        name: 'Syrup',
-        id: 59898978,
-        selectedOptions: [],
-        options: [{
-          id: 9876517831,
-          name: 'Vanilla',
-          price: .25,
-          quantity: 0
-        },
-        {
-          id: 9877894315,
-          name: 'Caramel',
-          price: .50,
-          quantity: 0
-        },
-        {
-          id: 9874578161,
-          name: 'Hazelnut',
-          price: .50,
-          quantity: 0
-        }]
-      },
-      {
-        name: 'Dairy',
-        id: 59898982,
-        selectedOptions: [],
-        options: [{
-          id: 7878979845,
-          name: 'Nonfat',
-          price: 0.00,
-          quantity: 1
-        },
-        {
-          id: 654841212,
-          name: '2%',
-          price: 0.00,
-          quantity: 1
-        },
-        {
-          id: 9876513524,
-          name: 'Whole',
-          price: 0.00,
-          quantity: 1
-        }]
-      },
-      {
-        name: 'Foam',
-        id: 59898985,
-        selectedOptions: [],
-        options: [{
-          id: 654841778,
-          name: 'Light',
-          price: 0.00,
-          quantity: 1
-        },
-        {
-          id: 654841712,
-          name: 'Regular',
-          price: 0.00,
-          quantity: 1
-        },
-        {
-          id: 654847212,
-          name: 'Extra',
-          price: 0.00,
-          quantity: 1
-        }]
-      }
-    ];
     return of(demoAdditions);
   }
 
@@ -153,9 +30,6 @@ export class CoffeeOrderService {
         if (currentAddition.id !== additionInstance.id) {
           return true;
         } else {
-          // if (currentAddition.selectedOptions.id !== additionInstance.selectedOptions.id) {
-          //   return true;
-          // }
           return additionInstance.selectedOptions.map((option) => {
             return (currentAddition.selectedOptions.find(currentOption => option.id === currentOption.id));
           });
@@ -188,9 +62,6 @@ export class CoffeeOrderService {
         return additionInstance.selectedOptions.map((option) => {
           return (currentAddition.selectedOptions.find(currentOption => currentOption.id === option.id));
         });
-        // if (currentAddition.selectedOption.id !== additionInstance.selectedOption.id) {
-        //   return true;
-        // }
       }
     });
     const additionTotal = additions.reduce((total, addition) => {

@@ -16,7 +16,8 @@ export class CoffeeAdditionComponent implements OnInit {
   @Input()
   addition: CoffeeAddition;
 
-  public selectedOptions: CoffeeAdditionOption[];
+  public selectedOption: CoffeeAdditionOption;
+  public selectedOptions: CoffeeAdditionOption[] = [];
 
   constructor(public orderService: CoffeeOrderService) { }
 
@@ -37,6 +38,10 @@ export class CoffeeAdditionComponent implements OnInit {
     if (currentAdditionSelection) {
       this.selectedOptions = currentAdditionSelection.selectedOptions;
     }
+  }
+
+  public parseSelection(event): void {
+    console.log(event);
   }
 
   public saveSelection(): void {

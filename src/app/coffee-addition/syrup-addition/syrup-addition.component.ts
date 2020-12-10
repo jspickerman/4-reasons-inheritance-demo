@@ -21,10 +21,14 @@ export class SyrupAdditionComponent extends CoffeeAdditionComponent implements O
   }
 
   public updateOption(updatedOption: CoffeeAdditionOption): void {
-    if (this.addition.selectedOptions.length > 0) {
-      this.addition.selectedOptions.map(currentOption => currentOption.id === updatedOption.id ? updatedOption : currentOption);
+    if (updatedOption.quantity !== 0) {
+      if (this.selectedOptions.length > 0) {
+        this.selectedOptions = [...this.selectedOptions.filter(currentOption => currentOption.id !== updatedOption.id), updatedOption];
+      } else {
+        this.selectedOptions = [...this.selectedOptions, updatedOption];
+      }
     } else {
-      this.addition.selectedOptions.push(updatedOption);
+      this.selectedOptions = this.selectedOptions.filter(currentOption => currentOption.id !== updatedOption.id);
     }
     this.saveSelection();
   }
