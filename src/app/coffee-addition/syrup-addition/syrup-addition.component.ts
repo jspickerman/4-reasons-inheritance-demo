@@ -28,14 +28,4 @@ export class SyrupAdditionComponent extends CoffeeAdditionComponent implements O
     }
     this.saveSelection();
   }
-
-  public saveSelection(): void {
-    if (this.selectedOption) {
-      this.selectedOption.quantity = this.quantity;
-      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOption);
-    } else {
-      this.orderService.removeAddition(this.coffeeOrder, this.addition);
-      this.quantity = 1;
-    }
-  }
 }

@@ -21,8 +21,8 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
   }
 
   public saveSelection(): void {
-    if (this.selectedOption) {
-      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOption);
+    if (this.selectedOptions.length > 0) {
+      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOptions);
       this.showCappuccinoMessage = this.suggestCappuccino();
     } else {
       this.orderService.removeAddition(this.coffeeOrder, this.addition);
@@ -31,8 +31,9 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
   }
   
   public suggestCappuccino(): boolean {
+    const extraFoamOption = this.selectedOptions.find(option => option.name === DairyFoam.EXTRA);
     return (
-        this.selectedOption.name === DairyFoam.EXTRA && 
+        extraFoamOption && 
         this.coffeeOrder.product.name !== CoffeeProducts.CAPPUCCINO
     );
   }
