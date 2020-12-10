@@ -16,13 +16,12 @@ export class CoffeeAdditionComponent implements OnInit {
   @Input()
   addition: CoffeeAddition;
 
-  public selectedOption: CoffeeAdditionOption;
+  public selectedOptions: CoffeeAdditionOption[];
 
   constructor(public orderService: CoffeeOrderService) { }
 
   ngOnInit() {
     this.preselectCurrentOption();
-    console.log(this.selectedOption);
   }
 
   public additionSelected(): boolean {
@@ -36,13 +35,13 @@ export class CoffeeAdditionComponent implements OnInit {
   public preselectCurrentOption(): void {
     const currentAdditionSelection = this.coffeeOrder.additions.find(currentAddition => currentAddition.id === this.addition.id);
     if (currentAdditionSelection) {
-      this.selectedOption = currentAdditionSelection.selectedOption;
+      this.selectedOptions = currentAdditionSelection.selectedOptions;
     }
   }
 
   public saveSelection(): void {
-    if (this.selectedOption) {
-      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOption);
+    if (this.selectedOptions) {
+      this.orderService.addAddition(this.coffeeOrder, this.addition, this.selectedOptions);
     } else {
       this.orderService.removeAddition(this.coffeeOrder, this.addition);
     }

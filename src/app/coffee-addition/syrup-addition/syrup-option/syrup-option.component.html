@@ -1,3 +1,8 @@
-<div>
-  yeet
+<div class="option-row">
+  <span>{{option.name}} - {{option.price | currency}}/ea</span>
+  <div class="quantity-container">
+    <i class="fas fa-minus-circle icon-button" (click)="decrease()"></i>
+    <span>{{option.quantity}}</span>
+    <i class="fas fa-plus-circle icon-button" (click)="increase()"></i>
+  </div>
 </div>

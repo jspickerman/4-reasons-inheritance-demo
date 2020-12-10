@@ -1,20 +1,7 @@
 <div class="addition-container">
   <h4 class="label">{{addition.name}}</h4>
-  <app-syrup-option *ngFor="let option of addition.options" [syrupOption]="option"></app-syrup-option>
-  <!-- <select class="addition-select" [(ngModel)]="selectedOption" (change)="saveSelection()">
-    <option [ngValue]="null">None</option>
-    <option *ngFor="let option of addition.options" [ngValue]="option">
-      {{option.name}} 
-      <ng-container *ngIf="showPrice(option)">
-      - {{option.price | currency}}
-      </ng-container>
-    </option>
-  </select>
-  <div class="quantity-row" *ngIf="selectedOption">
-    <div class="no-select">
-      <i class="fas fa-minus-circle icon-button" (click)="decrease()"></i>
-      <span>{{quantity}}</span>
-      <i class="fas fa-plus-circle icon-button" (click)="increase()"></i>
-    </div>
-  </div> -->
+  <app-syrup-option *ngFor="let option of addition.options" 
+    [option]="option"
+    (updatedOption)="updateOption($event)">
+  </app-syrup-option>
 </div>

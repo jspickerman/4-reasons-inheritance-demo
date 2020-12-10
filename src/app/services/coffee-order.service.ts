@@ -18,23 +18,23 @@ export class CoffeeOrderService {
     additions: [{        
       name: 'Dairy',
       id: 59898982,
-      selectedOption: {
+      selectedOptions: [{
         id: 654841212,
         name: '2%',
         price: 0.00,
         quantity: 1
-      },
+      }],
       options: []
     },
     {
       name: 'Foam',
       id: 59898985,
-      selectedOption: {
+      selectedOptions: [{
         id: 654841712,
         name: 'Regular',
         price: 0.00,
         quantity: 1
-      },
+      }],
       options: []
     }],
     total: 3.90
@@ -51,7 +51,7 @@ export class CoffeeOrderService {
     const demoAdditions = [{
         name: 'Sugar',
         id: 59898981,
-        selectedOption: null,
+        selectedOptions: [],
         options: [{
             id: 98765131,
             name: 'White Sugar',
@@ -74,30 +74,30 @@ export class CoffeeOrderService {
       {
         name: 'Syrup',
         id: 59898978,
-        selectedOption: null,
+        selectedOptions: [],
         options: [{
           id: 9876517831,
           name: 'Vanilla',
           price: .25,
-          quantity: 1
+          quantity: 0
         },
         {
           id: 9877894315,
           name: 'Caramel',
           price: .50,
-          quantity: 1
+          quantity: 0
         },
         {
           id: 9874578161,
           name: 'Hazelnut',
           price: .50,
-          quantity: 1
+          quantity: 0
         }]
       },
       {
         name: 'Dairy',
         id: 59898982,
-        selectedOption: null,
+        selectedOptions: [],
         options: [{
           id: 7878979845,
           name: 'Nonfat',
@@ -120,7 +120,7 @@ export class CoffeeOrderService {
       {
         name: 'Foam',
         id: 59898985,
-        selectedOption: null,
+        selectedOptions: [],
         options: [{
           id: 654841778,
           name: 'Light',
@@ -153,19 +153,25 @@ export class CoffeeOrderService {
         if (currentAddition.id !== additionInstance.id) {
           return true;
         } else {
-          if (currentAddition.selectedOption.id !== additionInstance.selectedOption.id) {
-            return true;
-          }
+          // if (currentAddition.selectedOptions.id !== additionInstance.selectedOptions.id) {
+          //   return true;
+          // }
+          return additionInstance.selectedOptions.map((option) => {
+            return (currentAddition.selectedOptions.find(currentOption => option.id === currentOption.id));
+          });
         }
       });
     }
   }
 
-  public addAddition(order: CoffeeOrder, addition: CoffeeAddition, option: CoffeeAdditionOption): void {
+  public addAddition(order: CoffeeOrder, addition: CoffeeAddition, options: CoffeeAdditionOption[]): void {
     const filteredAdditions = this.deduplicateAdditions(order.additions, addition);
-    const additions = [...filteredAdditions, {...addition, selectedOption: option}];
+    const additions = [...filteredAdditions, {...addition, selectedOptions: options}];
     const additionTotal = additions.reduce((total, addition) => {
-      total += addition.selectedOption.price * addition.selectedOption.quantity;
+      total = addition.selectedOptions.reduce((total, option) => {
+        total += option.price * option.quantity;
+        return total;
+      }, 0)
       return total;
     }, 0)
     const total = order.product.price + additionTotal;
@@ -179,13 +185,19 @@ export class CoffeeOrderService {
       if (currentAddition.id !== additionInstance.id) {
         return true;
       } else {
-        if (currentAddition.selectedOption.id !== additionInstance.selectedOption.id) {
-          return true;
-        }
+        return additionInstance.selectedOptions.map((option) => {
+          return (currentAddition.selectedOptions.find(currentOption => currentOption.id === option.id));
+        });
+        // if (currentAddition.selectedOption.id !== additionInstance.selectedOption.id) {
+        //   return true;
+        // }
       }
     });
     const additionTotal = additions.reduce((total, addition) => {
-      total += addition.selectedOption.price;
+      total = addition.selectedOptions.reduce((total, option) => {
+        total += option.price * option.quantity;
+        return total;
+      }, 0)
       return total;
     }, 0)
     const total = order.product.price + additionTotal;

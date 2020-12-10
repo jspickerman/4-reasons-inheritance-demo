@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoffeeAdditionOption } from '../../models/coffee-addition';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
 
@@ -19,15 +20,12 @@ export class SyrupAdditionComponent extends CoffeeAdditionComponent implements O
     super.ngOnInit();
   }
 
-  public increase(): void {
-    this.quantity++;
-    this.selectedOption.quantity = this.quantity;
-    this.saveSelection();
-  }
-
-  public decrease(): void {
-    this.quantity = this.quantity-- > 1 ? this.quantity-- : 1;
-    this.selectedOption.quantity = this.quantity;
+  public updateOption(updatedOption: CoffeeAdditionOption): void {
+    if (this.addition.selectedOptions.length > 0) {
+      this.addition.selectedOptions.map(currentOption => currentOption.id === updatedOption.id ? updatedOption : currentOption);
+    } else {
+      this.addition.selectedOptions.push(updatedOption);
+    }
     this.saveSelection();
   }
 
