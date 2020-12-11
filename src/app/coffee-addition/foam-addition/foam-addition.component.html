@@ -9,6 +9,6 @@
       </ng-container>
     </option>
   </select>
-  <span>{{order.additions | json}}</span>
+  <span>{{coffeeOrder.additions.selectedOptions | json}}</span>
   <span *ngIf="showCappuccinoMessage" class="nudge">Make Cappuccino?</span>
 </div>
