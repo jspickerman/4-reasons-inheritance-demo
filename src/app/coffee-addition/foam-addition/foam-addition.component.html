@@ -1,6 +1,6 @@
 <div class="addition-container">
   <h4 class="label">{{addition.name}}</h4>
-  <select class="addition-select" [(ngModel)]="selectedOption" (change)="saveSelection()">
+  <select class="addition-select" [(ngModel)]="selectedOption" (change)="addSelection()">
     <option [ngValue]="null">None</option>
     <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} 
@@ -9,6 +9,5 @@
       </ng-container>
     </option>
   </select>
-  <span>{{coffeeOrder.additions.selectedOptions | json}}</span>
-  <span *ngIf="showCappuccinoMessage" class="nudge">Make Cappuccino?</span>
+  <span *ngIf="showCappuccinoMessage" class="nudge" (click)="makeCappuccino()">Make Cappuccino?</span>
 </div>

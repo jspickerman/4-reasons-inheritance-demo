@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { CoffeeAddition, CoffeeAdditionOption, DairyFoam } from '../models/coffee-addition';
+import { CoffeeAddition, CoffeeAdditionOption, CoffeeProduct, CoffeeProducts,  DairyFoam } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 import { demoAdditions, demoOrder } from '../models/demo-data';
 
@@ -75,5 +75,10 @@ export class CoffeeOrderService {
     const updatedAddition = {...addition, selectedFoam: null};
     const additions = [...order.additions, {...updatedAddition}];
     this.order.next({...order, additions});
+  }
+
+  public updateProduct(order: CoffeeOrder, productName: CoffeeProducts): void {
+    const product = {...order.product, name: productName};
+    this.order.next({...order, product});
   }
 }
