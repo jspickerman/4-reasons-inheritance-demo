@@ -17,6 +17,7 @@ body, span, p {
 }
 
 .label {
+  margin-top: 0;
   margin-bottom: .5em;
 }
 
