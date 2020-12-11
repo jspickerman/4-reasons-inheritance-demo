@@ -58,7 +58,6 @@
 
 .addition-wrapper {
   width: 100%;
-  margin: .5em;
 }
 
 .addition-wrapper:not(:last-child) {
