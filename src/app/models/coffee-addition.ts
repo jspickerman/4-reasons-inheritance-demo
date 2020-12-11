@@ -26,6 +26,7 @@ export enum AdditionTypes {
 }
 
 export enum DairyFoam {
+  LIGHT = 'Light',
   REGULAR = 'Regular',
   EXTRA = 'Extra'
 }

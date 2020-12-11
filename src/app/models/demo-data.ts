@@ -1,4 +1,4 @@
-import { CoffeeAddition } from "./coffee-addition";
+import { CoffeeAddition, CoffeeProduct } from "./coffee-addition";
 import { CoffeeOrder } from "./coffee-order";
 
 const demoSugar: CoffeeAddition = {
@@ -109,13 +109,57 @@ const demoFoam: CoffeeAddition = {
   allowMultiple: false
 };
 
-export const demoOrder: CoffeeOrder = {
+export const demoLatte: CoffeeProduct = {
+  name: "Latte",
+  price: 3.9
+}
+
+export const demoCappuccino: CoffeeProduct = {
+  name: "Cappuccino",
+  price: 3.9
+}
+
+export const demoOrderLatte: CoffeeOrder = {
   size: "Large",
   roast: "medium",
-  product: {
-    name: "Latte",
-    price: 3.9
-  },
+  product: demoLatte,
+  additions: [
+    {
+      name: "Dairy",
+      id: 59898982,
+      selectedOptions: [
+        {
+          id: 654841212,
+          name: "2%",
+          price: 0.0,
+          quantity: 1
+        }
+      ],
+      options: [],
+      allowMultiple: false
+    },
+    {
+      name: "Foam",
+      id: 59898985,
+      selectedOptions: [
+        {
+          id: 654841712,
+          name: "Regular",
+          price: 0.0,
+          quantity: 1
+        }
+      ],
+      options: [],
+      allowMultiple: false
+    }
+  ],
+  total: 3.9
+};
+
+export const demoOrderCappuccino: CoffeeOrder = {
+  size: "Large",
+  roast: "medium",
+  product: demoCappuccino,
   additions: [
     {
       name: "Dairy",

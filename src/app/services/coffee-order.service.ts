@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { CoffeeAddition, CoffeeAdditionOption, CoffeeProduct, CoffeeProducts,  DairyFoam } from '../models/coffee-addition';
+import { AdditionTypes, CoffeeAddition, CoffeeAdditionOption, CoffeeProduct, CoffeeProducts,  DairyFoam } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
-import { demoAdditions, demoOrder } from '../models/demo-data';
+import { demoAdditions, demoCappuccino, demoOrderCappuccino, demoOrderLatte } from '../models/demo-data';
 
 /* Dear Reader: Don't worry about this code too much! We're faking a "coffee products" API here, just know that the public functions
 return Observables of coffee data, and can be used to add additions to an order*/
@@ -13,7 +13,7 @@ export class CoffeeOrderService {
   public order$: Observable<CoffeeOrder>
 
   constructor() { 
-    this.order = new BehaviorSubject(demoOrder);
+    this.order = new BehaviorSubject(demoOrderLatte);
     this.order$ = this.order.asObservable() as Observable<CoffeeOrder>;
   }
 
@@ -33,6 +33,18 @@ export class CoffeeOrderService {
       total += this.getOptionsTotal(addition.selectedOptions);
       return total;
     }, 0);
+  }
+
+  public convertToCappuccinoOrder(order: CoffeeOrder): void {
+    const additionsToMap = order.additions.filter(addition => addition.name !== AdditionTypes.FOAM);
+    let newOrder = demoOrderCappuccino;
+    console.log(newOrder);
+    const updatedDefaultAdditions = newOrder.additions.map((addition) => {
+      const existingAddition = additionsToMap.find(currentAddition => currentAddition.id === addition.id);
+      return (existingAddition ? existingAddition : addition);
+    });
+    newOrder.additions = [...updatedDefaultAdditions, ...additionsToMap];
+    this.order.next(newOrder);
   }
 
   public addAddition(order: CoffeeOrder, addition: CoffeeAddition): void {
@@ -75,10 +87,5 @@ export class CoffeeOrderService {
     const updatedAddition = {...addition, selectedFoam: null};
     const additions = [...order.additions, {...updatedAddition}];
     this.order.next({...order, additions});
-  }
-
-  public updateProduct(order: CoffeeOrder, productName: CoffeeProducts): void {
-    const product = {...order.product, name: productName};
-    this.order.next({...order, product});
   }
 }

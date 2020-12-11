@@ -23,6 +23,7 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.coffeeOrder) {
+      // console.log(this.coffeeOrder);
       this.showCappuccinoMessage = this.suggestCappuccino();
     }
   }
@@ -45,6 +46,6 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
   }
 
   public makeCappuccino(): void {
-    this.orderService.updateProduct(this.coffeeOrder, CoffeeProducts.CAPPUCCINO);
+    this.orderService.convertToCappuccinoOrder(this.coffeeOrder);
   }
 }
