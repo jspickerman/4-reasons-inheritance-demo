@@ -15,6 +15,7 @@ export class CoffeeOrderService {
   constructor() { 
     this.order = new BehaviorSubject(demoOrderLatte);
     this.order$ = this.order.asObservable() as Observable<CoffeeOrder>;
+    console.log(demoOrderCappuccino);
   }
 
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
@@ -38,7 +39,7 @@ export class CoffeeOrderService {
   public convertToCappuccinoOrder(order: CoffeeOrder): void {
     const additionsToMap = order.additions.filter(addition => addition.name !== AdditionTypes.FOAM);
     let newOrder = demoOrderCappuccino;
-    console.log(newOrder);
+    console.log('demo: ', newOrder);
     const updatedDefaultAdditions = newOrder.additions.map((addition) => {
       const existingAddition = additionsToMap.find(currentAddition => currentAddition.id === addition.id);
       return (existingAddition ? existingAddition : addition);
