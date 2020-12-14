@@ -1,6 +1,6 @@
 <div class="addition-container">
   <h4 class="label">{{addition.name}}</h4>
-  <select class="addition-select" [(ngModel)]="selectedOption" [compareWith]="compareOptions" (change)="addSelection()">
+  <select class="addition-select" [(ngModel)]="selectedOption" [compareWith]="optionsMatch" (change)="addSelection()">
     <option [ngValue]="undefined">None</option>
     <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} 

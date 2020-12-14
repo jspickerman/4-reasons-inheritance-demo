@@ -16,12 +16,12 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
     super(orderService);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     super.ngOnInit();
     this.showCappuccinoMessage = this.suggestCappuccino();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes.coffeeOrder) {
       // console.log(this.coffeeOrder);
       this.showCappuccinoMessage = this.suggestCappuccino();

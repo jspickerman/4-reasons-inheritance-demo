@@ -41,7 +41,7 @@ export class CoffeeAdditionComponent implements OnInit {
     }
   }
 
-  public compareOptions(firstOption: CoffeeAdditionOption, secondOption: CoffeeAdditionOption): boolean {
+  public optionsMatch(firstOption: CoffeeAdditionOption, secondOption: CoffeeAdditionOption): boolean {
     if (firstOption && secondOption) {
       console.log(firstOption);
       console.log(secondOption);

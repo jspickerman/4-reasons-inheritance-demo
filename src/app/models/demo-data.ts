@@ -142,12 +142,12 @@ export const demoOrderLatte: CoffeeOrder = {
       name: "Foam",
       id: 59898985,
       selectedOptions: [
-        {
-          id: 654841712,
-          name: "Regular",
-          price: 0.0,
-          quantity: 1
-        }
+      {
+        id: 654841712,
+        name: "Regular",
+        price: 0.0,
+        quantity: 1
+      }
       ],
       options: [],
       allowMultiple: false
