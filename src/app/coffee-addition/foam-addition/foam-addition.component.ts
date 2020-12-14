@@ -23,7 +23,6 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.coffeeOrder) {
-      // console.log(this.coffeeOrder);
       this.showCappuccinoMessage = this.suggestCappuccino();
     }
   }

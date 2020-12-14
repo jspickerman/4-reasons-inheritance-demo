@@ -18,6 +18,11 @@ export interface CoffeeProduct {
   price: number;
 }
 
+export enum CoffeeProducts {
+  CAPPUCCINO = 'cappucino',
+  LATTE = 'latte'
+}
+
 export enum AdditionTypes {
   DAIRY = 'Dairy',
   SUGAR = 'Sugar',
@@ -29,9 +34,4 @@ export enum DairyFoam {
   LIGHT = 'Light',
   REGULAR = 'Regular',
   EXTRA = 'Extra'
-}
-
-export enum CoffeeProducts {
-  CAPPUCCINO = 'cappucino',
-  LATTE = 'latte'
 }

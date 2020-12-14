@@ -1,4 +1,4 @@
-import { CoffeeAddition, CoffeeProduct } from "./coffee-addition";
+import { CoffeeAddition, CoffeeProduct } from "./coffee-products";
 
 export interface CoffeeOrder {
   size: string;
@@ -7,4 +7,3 @@ export interface CoffeeOrder {
   additions: CoffeeAddition[];
   total: number;
 }
-

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CoffeeAddition, CoffeeAdditionOption } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 import { CoffeeOrderService } from '../services/coffee-order.service';
@@ -21,7 +21,7 @@ export class CoffeeAdditionComponent implements OnInit {
 
   constructor(public orderService: CoffeeOrderService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.preselectCurrentOption();
   }
 
@@ -43,9 +43,9 @@ export class CoffeeAdditionComponent implements OnInit {
 
   public optionsMatch(firstOption: CoffeeAdditionOption, secondOption: CoffeeAdditionOption): boolean {
     if (firstOption && secondOption) {
-      console.log(firstOption);
-      console.log(secondOption);
       return (firstOption.id === secondOption.id);
+    } else if (!firstOption && !secondOption) {
+      return true;
     } else {
       return false;
     }
