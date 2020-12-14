@@ -19,7 +19,7 @@ export class CoffeeAdditionComponent implements OnInit {
   public selectedOption: CoffeeAdditionOption;
   public selectedOptions: CoffeeAdditionOption[] = [];
 
-  constructor(public orderService: CoffeeOrderService, public cdRef: ChangeDetectorRef) { }
+  constructor(public orderService: CoffeeOrderService) { }
 
   ngOnInit() {
     this.preselectCurrentOption();
@@ -39,8 +39,16 @@ export class CoffeeAdditionComponent implements OnInit {
       this.selectedOptions = currentAdditionSelection.selectedOptions;
       this.selectedOption = this.selectedOptions[0];
     }
-    console.log(this.selectedOption);
-    cdRef.detectChanges();
+  }
+
+  public compareOptions(firstOption: CoffeeAdditionOption, secondOption: CoffeeAdditionOption): boolean {
+    if (firstOption && secondOption) {
+      console.log(firstOption);
+      console.log(secondOption);
+      return (firstOption.id === secondOption.id);
+    } else {
+      return false;
+    }
   }
 
   public addSelection(): void {

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoffeeAdditionOption } from '../../models/coffee-addition';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
@@ -12,9 +12,9 @@ export class SyrupAdditionComponent extends CoffeeAdditionComponent implements O
 
   quantity: number = 1;
 
-  constructor(orderService: CoffeeOrderService, public cdRef: ChangeDetectorRef) {
-    super(orderService, cdRef);
-   }
+  constructor(orderService: CoffeeOrderService) {
+    super(orderService);
+  }
 
   ngOnInit(): void {
     super.ngOnInit();
