@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { CoffeeAddition, CoffeeAdditionOption } from '../models/coffee-addition';
 import { CoffeeOrder } from '../models/coffee-order';
 import { CoffeeOrderService } from '../services/coffee-order.service';
@@ -19,7 +19,7 @@ export class CoffeeAdditionComponent implements OnInit {
   public selectedOption: CoffeeAdditionOption;
   public selectedOptions: CoffeeAdditionOption[] = [];
 
-  constructor(public orderService: CoffeeOrderService) { }
+  constructor(public orderService: CoffeeOrderService, public cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.preselectCurrentOption();
@@ -37,7 +37,10 @@ export class CoffeeAdditionComponent implements OnInit {
     const currentAdditionSelection = this.coffeeOrder.additions.find(currentAddition => currentAddition.id === this.addition.id);
     if (currentAdditionSelection) {
       this.selectedOptions = currentAdditionSelection.selectedOptions;
+      this.selectedOption = this.selectedOptions[0];
     }
+    console.log(this.selectedOption);
+    cdRef.detectChanges();
   }
 
   public addSelection(): void {

@@ -1,7 +1,7 @@
 <div class="addition-container">
   <h4 class="label">{{addition.name}}</h4>
   <select class="addition-select" [(ngModel)]="selectedOption" (change)="addSelection()">
-    <option [ngValue]="null">None</option>
+    <option [ngValue]="undefined">None</option>
     <option *ngFor="let option of addition.options" [ngValue]="option">
       {{option.name}} 
       <ng-container *ngIf="showPrice(option)">

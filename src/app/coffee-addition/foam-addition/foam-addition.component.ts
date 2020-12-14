@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, SimpleChanges } from '@angular/core';
 import { AdditionTypes, CoffeeProducts, DairyFoam } from '../../models/coffee-addition';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
@@ -12,9 +12,9 @@ export class FoamAdditionComponent extends CoffeeAdditionComponent implements On
 
   showCappuccinoMessage: boolean;
 
-  constructor(orderService: CoffeeOrderService) {
-    super(orderService);
-  }
+  constructor(orderService: CoffeeOrderService, public cdRef: ChangeDetectorRef) {
+    super(orderService, cdRef);
+   }
 
   ngOnInit() {
     super.ngOnInit();

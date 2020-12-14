@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
 
@@ -9,8 +9,8 @@ import { CoffeeAdditionComponent } from '../coffee-addition.component';
 })
 export class DairyAdditionComponent extends CoffeeAdditionComponent implements OnInit {
 
-  constructor(orderService: CoffeeOrderService) {
-    super(orderService);
+  constructor(orderService: CoffeeOrderService, public cdRef: ChangeDetectorRef) {
+    super(orderService, cdRef);
    }
 
   ngOnInit(): void {
