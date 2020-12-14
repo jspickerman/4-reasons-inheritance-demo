@@ -1,4 +1,4 @@
-import { CoffeeAddition, CoffeeProduct } from "./coffee-addition";
+import { CoffeeAddition, CoffeeProduct } from "./coffee-products";
 import { CoffeeOrder } from "./coffee-order";
 
 const demoSugar: CoffeeAddition = {
