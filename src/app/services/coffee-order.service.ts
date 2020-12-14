@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { AdditionTypes, CoffeeAddition, CoffeeAdditionOption, CoffeeProduct, CoffeeProducts,  DairyFoam } from '../models/coffee-addition';
+import { AdditionTypes, CoffeeAddition, CoffeeAdditionOption, DairyFoam } from '../models/coffee-products';
 import { CoffeeOrder } from '../models/coffee-order';
 import { demoAdditions, demoCappuccino, demoOrderCappuccino, demoOrderLatte } from '../models/demo-data';
 
