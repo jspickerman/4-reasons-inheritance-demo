@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CoffeeAdditionOption } from '../../../models/coffee-addition';
+import { CoffeeAdditionOption } from '../../../models/coffee-products';
 
 @Component({
   selector: 'app-syrup-option',

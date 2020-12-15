@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CoffeeAdditionOption } from '../../models/coffee-addition';
+import { CoffeeAdditionOption } from '../../models/coffee-products';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
 

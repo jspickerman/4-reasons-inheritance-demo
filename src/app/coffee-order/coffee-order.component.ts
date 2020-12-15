@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AdditionTypes, CoffeeAddition } from '../models/coffee-addition';
+import { AdditionTypes, CoffeeAddition } from '../models/coffee-products';
 import { CoffeeOrder } from '../models/coffee-order';
 import { CoffeeOrderService } from '../services/coffee-order.service';
 

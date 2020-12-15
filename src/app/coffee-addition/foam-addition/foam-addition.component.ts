@@ -1,5 +1,5 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { AdditionTypes, CoffeeProducts, DairyFoam } from '../../models/coffee-addition';
+import { AdditionTypes, CoffeeProducts, DairyFoam } from '../../models/coffee-products';
 import { CoffeeOrderService } from '../../services/coffee-order.service';
 import { CoffeeAdditionComponent } from '../coffee-addition.component';
 
