@@ -15,7 +15,6 @@ export class CoffeeOrderService {
   constructor() { 
     this.order = new BehaviorSubject(demoOrderLatte);
     this.order$ = this.order.asObservable() as Observable<CoffeeOrder>;
-    console.log(demoOrderCappuccino);
   }
 
   public getDemoAdditions(): Observable<CoffeeAddition[]> {
