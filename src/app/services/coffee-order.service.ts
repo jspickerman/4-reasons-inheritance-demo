@@ -39,7 +39,6 @@ export class CoffeeOrderService {
   public convertToCappuccinoOrder(order: CoffeeOrder): void {
     const additionsToMap = order.additions.filter(addition => addition.name !== AdditionTypes.FOAM);
     let newOrder = demoOrderCappuccino;
-    console.log('demo: ', newOrder);
     const updatedDefaultAdditions = newOrder.additions.map((addition) => {
       const existingAddition = additionsToMap.find(currentAddition => currentAddition.id === addition.id);
       return (existingAddition ? existingAddition : addition);
