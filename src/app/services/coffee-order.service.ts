@@ -4,8 +4,7 @@ import { AdditionTypes, CoffeeAddition, CoffeeAdditionOption, DairyFoam } from '
 import { CoffeeOrder } from '../models/coffee-order';
 import { demoAdditions, demoCappuccino, demoOrderCappuccino, demoOrderLatte } from '../models/demo-data';
 
-/* Dear Reader: Don't worry about this code too much! We're faking a "coffee products" API here, just know that the public functions
-return Observables of coffee data, and can be used to add additions to an order*/
+/* Dear Reader: Don't worry about this code too much! We're faking a "coffee products" API here, just know that we're returning observables of coffee orders, and there are a few void functions for adding additions */
 
 @Injectable()
 export class CoffeeOrderService {
